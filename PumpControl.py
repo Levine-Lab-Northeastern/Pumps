@@ -15,6 +15,11 @@ from Pump import *
 # GUI
 #####################################################################
 
+
+fdsndkfnksnfdm
+
+
+
 class PumpControl(QtWidgets.QWidget):
 
     syringes = {'1 ml BD':'4.699',
