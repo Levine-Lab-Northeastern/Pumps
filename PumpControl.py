@@ -9,7 +9,7 @@ import sys
 import threading
 from PyQt5 import QtGui, QtCore,  QtWidgets
 
-from Pump import *
+# from Pump import *
 
 #####################################################################
 # GUI

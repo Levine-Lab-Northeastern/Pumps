@@ -9,8 +9,6 @@ import sys
 import threading
 from PyQt5 import QtGui, QtCore,  QtWidgets
 
-# import threading
-#this is a new line, 
 
 log = logging.getLogger(__name__)
 
