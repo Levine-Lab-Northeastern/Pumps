@@ -16,7 +16,7 @@ def main_ui():
         if (len(sys.argv)>1):
             fp = open(sys.argv[1])
         else:
-            fp = open('mypumps3.json')
+            fp = open('mypumps1.json')
         pump_config = json.load(fp)
         fp.close()
     except IOError:
@@ -24,15 +24,15 @@ def main_ui():
         sys.exit(0)
 
     programs = {x['name']:x for x in pump_config['programs']}
-    ser = serial.Serial(baudrate=19200,timeout=0.1,port='COM1')
+    ser = serial.Serial(baudrate=19200,timeout=0.1,port='COM4')
     print(ser.is_open)
 
     pumps = []
     for c in pump_config['pumps']:
-        pumps.append(Pump(ser,c))
+        pumps.append(pm.Pump(ser,c))
 
     app = QtWidgets.QApplication(sys.argv)
-    ex = PumpControl(ser,pumps,programs)
+    ex = pc.PumpControl(ser,pumps,programs)
     ret = app.exec_()
     ex.t.cancel()
     sys.exit(ret)
@@ -43,19 +43,19 @@ def main_test(sleeptime=None):
         if (len(sys.argv)>1):
             fp = open(sys.argv[1])
         else:
-            fp = open('mypumps.json')
+            fp = open('mypumps1.json')
         pump_config = json.load(fp)
         fp.close()
     except IOError:
         print ('config file not found')
         sys.exit(0)
 
-    ser = serial.Serial(baudrate=19200,timeout=0.1,port='COM1')
+    ser = serial.Serial(baudrate=19200,timeout=0.1,port='COM4')
     print(ser.is_open)
 
     pumps = []
     for c in pump_config['pumps']:
-        pumps.append(Pump(ser,c))
+        pumps.append(pm.Pump(ser,c))
 
     for p in pumps:
         p.setDirection('infuse')
@@ -116,5 +116,9 @@ def main_test(sleeptime=None):
 
 
 if __name__ == '__main__':
+    # from Pump import*
+    # from PumpControl import*
+    import Pump as pm
+    import PumpControl as pc
     #main_test(10)
     main_ui()
