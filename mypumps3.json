@@ -1,13 +1,13 @@
 { "pumps":  [
-      { "address": 2,
-      "diameter" : 14.3,
+      { "address": 6,
+      "diameter" : 14.5,
       "volume" : 6000,
       "rate" : 200,
       "rate-units" : "UM", "vol-units" : "UL"
     },
    {
-      "address": 1,
-      "diameter" : 14.3,
+      "address": 3,
+      "diameter" : 14.5,
       "volume" : 10,
       "rate" : 6000,
       "rate-units" : "UM", "vol-units" : "UL"

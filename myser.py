@@ -16,7 +16,7 @@ def main_ui():
         if (len(sys.argv)>1):
             fp = open(sys.argv[1])
         else:
-            fp = open('mypumps1.json')
+            fp = open('mypumps3.json')
         pump_config = json.load(fp)
         fp.close()
     except IOError:
