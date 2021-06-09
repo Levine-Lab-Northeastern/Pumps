@@ -201,6 +201,11 @@ class Pump(object):
             self._lock.release()
         return match.groupdict()
 
+
+    def sendCommand(self,cmd):
+        '''send any command'''
+        self._write_read(cmd,False)
+
     def _read_check(self,ser, adr, cmd, value):
         cmd = str(self._address) + ' ' + cmd + '\r'
         res = self._write_read(cmd)
@@ -229,9 +234,6 @@ class Pump(object):
     def setDirection(self, direction):
         ''' Set direction of the pump. Valid directions are 'infuse', 'withdraw' and 'reverse'. '''
         self._write_read('DIR {}'.format(self.REV_DIR_MODE[direction]))
-    def sendCommand(self,cmd):
-        '''send any command'''
-        self._write_read(cmd,False)
     def getDirection(self):
         ''' Get current direction of the pump. Response will be either 'infuse' or 'withdraw'. '''
         return self.DIR_MODE[self._write_read('DIR')['data']]
