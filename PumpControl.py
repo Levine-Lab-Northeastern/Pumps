@@ -55,6 +55,7 @@ class PumpControl(QtWidgets.QWidget):
         grid.addWidget(QtWidgets.QLabel('Volume ul'),2,4)
         grid.addWidget(QtWidgets.QLabel('Flow rate ul/min'), 2, 5)
         grid.addWidget(QtWidgets.QLabel('Cur rate ul/min'),2,6)
+        grid.addWidget(QtWidgets.QLabel('vol dispensed'),2,7)
           
         # interate over pumps, adding a row for each
         self.mapper = QtCore.QSignalMapper(self) # programs
@@ -63,6 +64,7 @@ class PumpControl(QtWidgets.QWidget):
         self.runmanmapper = QtCore.QSignalMapper(self) # run manual
         self.stopmapper = QtCore.QSignalMapper(self) # stop
         self.currflow = []
+        self.voldis = []
         self.vol = []
         self.rates = []
         # self.prime_btns = dict()
@@ -125,12 +127,17 @@ class PumpControl(QtWidgets.QWidget):
             self.currflow[i].setAlignment(QtCore.Qt.AlignHCenter)
             grid.addWidget(self.currflow[i],row,6)
 
+            # add label to show current flow rates
+            self.voldis.append(QtWidgets.QLabel(self))
+            self.voldis[i].setAlignment(QtCore.Qt.AlignHCenter)
+            grid.addWidget(self.voldis[i], row, 7)
+
             # add run button
             btn = QtWidgets.QPushButton('Run Prog',self)
             btn.setCheckable(True)# makes the button toggleable
             self.runmapper.setMapping(btn,i)
             btn.clicked.connect(self.runmapper.map)
-            grid.addWidget(btn,row,7)
+            grid.addWidget(btn,row,8)
             self.run_btns.append(btn)
 
             # add run manual button
@@ -138,7 +145,7 @@ class PumpControl(QtWidgets.QWidget):
             btn.setCheckable(True)
             self.runmanmapper.setMapping(btn,i)
             btn.clicked.connect(self.runmanmapper.map)
-            grid.addWidget(btn,row,8)
+            grid.addWidget(btn,row,9)
             self.run_man_btns.append(btn)
 
 
@@ -147,7 +154,7 @@ class PumpControl(QtWidgets.QWidget):
             btn.setCheckable(False)# makes the button toggleable
             self.stopmapper.setMapping(btn,i)
             btn.clicked.connect(self.stopmapper.map)
-            grid.addWidget(btn,row,9)
+            grid.addWidget(btn,row,10)
             self.stop_btns.append(btn)
 
 
@@ -519,6 +526,7 @@ class PumpControl(QtWidgets.QWidget):
                 print('rate is {}'.format(str(self.rates[i].text())))
                 print('vol to dispense {}'.format(str(self.vol[i].text())))
 
+
                 self._pumps[i]._write_read('FUN RAT')
                 self._pumps[i].setRate(str(self.rates[i].text()))
                 self._pumps[i].setVolume(str(self.vol[i].text()))
@@ -554,6 +562,7 @@ class PumpControl(QtWidgets.QWidget):
                 self.run_man_btns[i].setChecked(False)
             else:
                 self.currflow[i].setText(p.getRate())
+                self.voldis[i].setText(p.getDispensed())
         self.t = threading.Timer(self._update_status_time,self.check_rates_loop)
         self.t.start()
 

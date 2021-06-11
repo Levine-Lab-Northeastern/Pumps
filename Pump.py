@@ -126,6 +126,7 @@ class Pump(object):
         self._ser = ser
         self._lock = lock
         self._check_lock = lock is not None
+        self._direction = None
         if 'rate' in config:
             self._rate = config['rate']
         else:
@@ -204,7 +205,7 @@ class Pump(object):
 
     def sendCommand(self,cmd):
         '''send any command'''
-        self._write_read(cmd,False)
+        self._write_read(cmd,check_lock=False)
 
     def _read_check(self,ser, adr, cmd, value):
         cmd = str(self._address) + ' ' + cmd + '\r'
@@ -233,6 +234,7 @@ class Pump(object):
         self._write_read('STP')
     def setDirection(self, direction):
         ''' Set direction of the pump. Valid directions are 'infuse', 'withdraw' and 'reverse'. '''
+        self._direction = direction
         self._write_read('DIR {}'.format(self.REV_DIR_MODE[direction]))
     def getDirection(self):
         ''' Get current direction of the pump. Response will be either 'infuse' or 'withdraw'. '''
@@ -247,21 +249,17 @@ class Pump(object):
     def setVolume(self, volume, unit=None):
         ''' Set current volume of the pump '''
         return self._write_read('VOL {}'.format(volume))
-
-    ### not tested
     def getVolume(self, unit=None):
-        ''' Get current volume of the pump '''
+        ''' Get current volume of the pump -- not tested'''
         if SIM: return
         return self._write_read('VOL')['data']
-    def _getDispensed(self, direction):
-        # Helper method for getInfused and getWithdrawn
-        result = self._write_read('DIS')['data']
-        #log.debug('_dispensed: %s, result: %s', self._dispensed, result)
-        match = self._dispensed.match(result)
-        # if match.group('units') != self.volume_unit_cmd:
-        #     raise PumpUnitError('ML', match.group('units'), 'DIS')
-        # else:
-        return float(match.group(direction))
+
+    def getDispensed(self):#, direction):
+        res = self._dispensed.match(self._write_read('DIS')['data'])#.decode('utf-8'))
+        res = res.groupdict()
+        print(res)
+        return res[self._direction.lower()]+res['units']
+
     def resetDispensed(self):
         ''' Reset dispense measures '''
         self._lastInfused   = 0
