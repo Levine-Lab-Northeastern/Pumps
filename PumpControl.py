@@ -223,6 +223,7 @@ class PumpControl(QtWidgets.QWidget):
         print('just change the program of pump {} to {}'.format(i,self._prog[i]))
     def set_dir(self, i):
         self._dir[i] = self.dirmapper.mapping(i).currentText()
+        self._pumps[i]._direction = self._dir[i]
 
     def set_vol(self,i): # must be reset the run command to take effect
         self._vol[i] = self.mappervol.mapping(i).currentText()
@@ -523,18 +524,20 @@ class PumpControl(QtWidgets.QWidget):
                     self.run_btns[i].setChecked(False)
                 if self._pumps[i].getStatus() != 'halted':
                     self._pumps[i].stop()
-                print('rate is {}'.format(str(self.rates[i].text())))
-                print('vol to dispense {}'.format(str(self.vol[i].text())))
+                rate = str(self.rates[i].text())
+                vol = str(self.vol[i].text())
+                print('rate is {}'.format(rate)) #str(self.rates[i].text())))
+                print('vol to dispense {}'.format(vol)) #str(self.vol[i].text())))
 
-
-                self._pumps[i]._write_read('FUN RAT')
-                self._pumps[i].setRate(str(self.rates[i].text()))
-                self._pumps[i].setVolume(str(self.vol[i].text()))
-                self._pumps[i].setDirection(self._dir[i])
-                #self._pumps[i]._write_read('DIR WDR')
-                #self._pumps[i]._write_read('DIR INF')
-                self._pumps[i].run()
-                print(type(self.vol[i].text()))
+                self._pumps[i].singlePhaseProgram(rate,vol,self._dir[i])
+                #self._pumps[i]._write_read('FUN RAT')
+                #self._pumps[i].setRate(str(self.rates[i].text()))
+                #self._pumps[i].setVolume(str(self.vol[i].text()))
+                #self._pumps[i].setDirection(self._dir[i])
+                    #self._pumps[i]._write_read('DIR WDR')
+                    #self._pumps[i]._write_read('DIR INF')
+                #self._pumps[i].run()
+                #print(type(self.vol[i].text()))
             else:
                 if self._pumps[i].getStatus() != 'halted':
                     self._pumps[i].stop()

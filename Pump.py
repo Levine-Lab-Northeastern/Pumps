@@ -207,6 +207,24 @@ class Pump(object):
         '''send any command'''
         self._write_read(cmd,check_lock=False)
 
+    def singlePhaseProgram(self,rat,vol,direction):
+        """intended for runManual in PumpControl, takes rate,vol,dir"""
+        self._lock.acquire()
+        self._write_read('PHN  1', check_lock=False)
+        self._write_read('FUN RAT',check_lock=False)
+        self._write_read('RAT {} {}'.format(str(rat), 'UM'), check_lock=False)
+        self._write_read('VOL {}'.format(str(vol)), check_lock=False)
+        #self._write_read('DIR {}'.format(dir), check_lock=False) # dir must be 'inf' or 'wdr'
+        #'DIR {}'.format(self.REV_DIR_MODE[direction])
+        self._write_read('DIR {}'.format(self.REV_DIR_MODE[direction]), check_lock=False)
+
+        self._write_read('PHN  2', check_lock=False)
+        self._write_read('FUN STP', check_lock=False)
+
+        #self._write_read('RUN', check_lock=False)
+        self._lock.release()
+        self._write_read('RUN', check_lock=True)
+
     def _read_check(self,ser, adr, cmd, value):
         cmd = str(self._address) + ' ' + cmd + '\r'
         res = self._write_read(cmd)
