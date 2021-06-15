@@ -275,7 +275,7 @@ class Pump(object):
     def getDispensed(self):#, direction):
         res = self._dispensed.match(self._write_read('DIS')['data'])#.decode('utf-8'))
         res = res.groupdict()
-        print(res)
+        #print(res)
         return res[self._direction.lower()]+res['units']
 
     def resetDispensed(self):
