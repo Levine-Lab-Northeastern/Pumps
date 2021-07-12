@@ -113,7 +113,42 @@ def main_test(sleeptime=None):
     ser.close()
 
     return ser, pumps
+def testvalve():
+    try:
+        if (len(sys.argv)>1):
+            fp = open(sys.argv[1])
+        else:
+            fp = open('mypumps3.json')
+        pump_config = json.load(fp)
+        fp.close()
+    except IOError:
+        print ('config file not found')
+        sys.exit(0)
 
+    programs = {x['name']:x for x in pump_config['programs']}
+    ser = serial.Serial(baudrate=19200,timeout=0.1,port='COM4')
+    print(ser.is_open)
+
+    pumps = []
+    for c in pump_config['pumps']:
+        pumps.append(pm.Pump(ser,c))
+
+    eib = ls.EIB200(5)
+    myValve = ls.Valve(eib.ls4vm,1)
+    myValve.moveToPort(1)
+    time.sleep(2)
+    pumps[2].singlePhaseProgram(100,200,wi)
+
+    # print(myValve.getStatus())
+    # print('move to 1')
+    # myValve.moveToPort(1)
+    # for i in range(50):
+    #     print(myValve.getStatus())
+    # print('move to 6')
+    # print(myValve.getStatus())
+    # myValve.moveToPort(6)
+    # for i in range(50):
+    #     print(myValve.getStatus())
 
 if __name__ == '__main__':
     # from Pump import*
@@ -121,4 +156,7 @@ if __name__ == '__main__':
     import Pump as pm
     import PumpControl as pc
     #main_test(10)
-    main_ui()
+    #main_ui()
+
+    import labsmith as ls
+    testvalve()
