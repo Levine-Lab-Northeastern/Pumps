@@ -16,7 +16,7 @@ def main_ui():
         if (len(sys.argv)>1):
             fp = open(sys.argv[1])
         else:
-            fp = open('mypumps3.json')
+            fp = open('mypumps1.json')
         pump_config = json.load(fp)
         fp.close()
     except IOError:
@@ -137,7 +137,7 @@ def testvalve():
     myValve = ls.Valve(eib.ls4vm,1)
     myValve.moveToPort(1)
     time.sleep(2)
-    pumps[2].singlePhaseProgram(100,200,wi)
+    pumps[2].singlePhaseProgram(100,200,'Withdraw')
 
     # print(myValve.getStatus())
     # print('move to 1')
@@ -156,7 +156,7 @@ if __name__ == '__main__':
     import Pump as pm
     import PumpControl as pc
     #main_test(10)
-    #main_ui()
+    main_ui()
 
-    import labsmith as ls
-    testvalve()
+    #import labsmith as ls
+    #testvalve()

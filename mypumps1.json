@@ -1,5 +1,5 @@
 { "pumps":  [
-      { "address": 6,
+      { "address": 0,
       "diameter" : 14.3,
       "volume" : 6000,
       "rate" : 200,
