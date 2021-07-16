@@ -4,6 +4,13 @@
       "volume" : 6000,
       "rate" : 200,
       "rate-units" : "UM", "vol-units" : "UL"
+    },
+   {
+      "address": 3,
+      "diameter" : 14.3,
+      "volume" : 10,
+      "rate" : 6000,
+      "rate-units" : "UM", "vol-units" : "UL"
     }
 ],
  "programs": [

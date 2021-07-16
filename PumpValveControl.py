@@ -7,8 +7,8 @@ import logging
 import atexit
 import sys
 import threading
-from PyQt5 import QtGui, QtCore, QtWidgets
-
+from PyQt5 import QtGui, QtCore,  QtWidgets
+from PumpValve import PumpValve
 
 # from Pump import *
 
@@ -16,26 +16,32 @@ from PyQt5 import QtGui, QtCore, QtWidgets
 # GUI
 #####################################################################
 
-class PumpControl(QtWidgets.QWidget):
-    syringes = {'1 ml BD': '4.699',
-                '3 ml BD': '8.585',
-                '10 ml BD': '14.60',
-                '30ml BD': '21.59'}
+class PumpValveControl(QtWidgets.QWidget):
 
-    def __init__(self, ser, pumps, prog_dict):
-        super(PumpControl, self).__init__()
+    syringes = {'1 ml BD':'4.699',
+                '3 ml BD':'8.585',
+                '10 ml BD':'14.60',
+                '30ml BD':'21.59'}
+   
+    def __init__(self, ser, pumps, valves, prog_dict):
+        super(PumpValveControl, self).__init__()
         self._ser = ser
         self._pumps = pumps
+        self._valves = valves
+        self._pv_units = []
+        for j,(p,v) in enumerate(zip(pumps,valves)):
+            self._pv_units.append(PumpValve(v, p, j))
+
         self._prog_dict = prog_dict
         self._update_status_time = 4
         self.initUI()
-
-    def initUI(self):
-
+        
+    def initUI(self):      
+        
         # set grid layout
         grid = QtWidgets.QGridLayout()
         grid.setSpacing(10)
-
+        
         # setup two buttons along top
         # self.runbtn = QtWidgets.QPushButton('does nothing',self)
         # grid.addWidget(self.runbtn,1,2)
@@ -48,21 +54,23 @@ class PumpControl(QtWidgets.QWidget):
         # # self.stopbtn.clicked.connect(self.stop_all)
 
         # optional column labels
-        grid.addWidget(QtWidgets.QLabel('Pump number'), 2, 0)
-        grid.addWidget(QtWidgets.QLabel('Program'), 2, 1)
-        grid.addWidget(QtWidgets.QLabel('Direction'), 2, 2)
-        grid.addWidget(QtWidgets.QLabel('Contents'), 2, 3)
-        grid.addWidget(QtWidgets.QLabel('Volume ul'), 2, 4)
-        grid.addWidget(QtWidgets.QLabel('Flow rate ul/min'), 2, 5)
-        grid.addWidget(QtWidgets.QLabel('Cur rate ul/min'), 2, 6)
-        grid.addWidget(QtWidgets.QLabel('vol dispensed'), 2, 7)
-
+        grid.addWidget(QtWidgets.QLabel('Pump number'),2,0)
+        grid.addWidget(QtWidgets.QLabel('Program'),2,1)
+        grid.addWidget(QtWidgets.QLabel('Valve Port'),2,2)
+        grid.addWidget(QtWidgets.QLabel('Direction'), 2, 3)
+        grid.addWidget(QtWidgets.QLabel('Contents'),2,4)
+        grid.addWidget(QtWidgets.QLabel('Volume ul'),2,5)
+        grid.addWidget(QtWidgets.QLabel('Flow rate ul/min'), 2, 6)
+        grid.addWidget(QtWidgets.QLabel('Cur rate ul/min'),2,7)
+        grid.addWidget(QtWidgets.QLabel('vol dispensed'),2,8)
+          
         # interate over pumps, adding a row for each
-        self.mapper = QtCore.QSignalMapper(self)  # programs
-        self.dirmapper = QtCore.QSignalMapper(self)  # direction
-        self.runmapper = QtCore.QSignalMapper(self)  # run program
-        self.runmanmapper = QtCore.QSignalMapper(self)  # run manual
-        self.stopmapper = QtCore.QSignalMapper(self)  # stop
+        self.mapper = QtCore.QSignalMapper(self) # programs
+        self.portmapper = QtCore.QSignalMapper(self) # ports
+        self.dirmapper = QtCore.QSignalMapper(self) # direction
+        self.runmapper = QtCore.QSignalMapper(self)   # run program
+        self.runmanmapper = QtCore.QSignalMapper(self) # run manual
+        self.stopmapper = QtCore.QSignalMapper(self) # stop
         self.currflow = []
         self.voldis = []
         self.vol = []
@@ -73,18 +81,21 @@ class PumpControl(QtWidgets.QWidget):
         self.stop_btns = []
 
         self._prog = list(range(len(self._pumps)))
+        self._port = list(range(len(self._valves)))
         self._dir = list(range(len(self._pumps)))
 
-        self._lock = threading.Lock()
+        self._pump_lock = threading.Lock()
+        self._valve_lock = threading.Lock()
 
-        for i, pump in enumerate(self._pumps):
-            pump.setLock(self._lock)
-            row = 3 + i
-
+        for i,unit in enumerate(self._pv_units):
+            unit.pump.setLock(self._pump_lock)
+            unit.valve.setLock(self._valve_lock)
+            row = 3+i
+            
             # add pump number
-            pumplab = QtWidgets.QLabel('Pump #{}'.format(pump.getAddress()))
+            pumplab = QtWidgets.QLabel('Pump #{}'.format(unit.pump.getAddress()))
             pumplab.setAlignment(QtCore.Qt.AlignHCenter)
-            grid.addWidget(pumplab, row, 0)
+            grid.addWidget(pumplab,row,0)
 
             # # add syringe pulldown
             # combo = QtWidgets.QComboBox(self)
@@ -94,13 +105,23 @@ class PumpControl(QtWidgets.QWidget):
             # grid.addWidget(combo,row,1)
 
             # add programs pulldown
+            # prog pulldown
             combo = QtWidgets.QComboBox(self)
             for prog in self._prog_dict:
                 combo.addItem(prog)
-            self.mapper.setMapping(combo, i)
+            self.mapper.setMapping(combo,i)
             combo.activated.connect(self.mapper.map)
-            grid.addWidget(combo, row, 1)
+            grid.addWidget(combo,row,1)
             self.set_program(i)
+
+            # add ports pulldown
+            combo_port = QtWidgets.QComboBox(self)
+            for p in range(8):
+                combo_port.addItem(str(p+1))
+            self.portmapper.setMapping(combo_port, i)
+            combo_port.activated.connect(self.portmapper.map)
+            grid.addWidget(combo_port, row, 2)
+            self.set_port(i)
 
             # add direction pulldown
             combo_dir = QtWidgets.QComboBox(self)
@@ -108,53 +129,55 @@ class PumpControl(QtWidgets.QWidget):
             combo_dir.addItem('Withdraw')
             self.dirmapper.setMapping(combo_dir, i)
             combo_dir.activated.connect(self.dirmapper.map)
-            grid.addWidget(combo_dir, row, 2)
+            grid.addWidget(combo_dir, row, 3)
             self.set_dir(i)
 
             # add textbox to put syring contents
-            grid.addWidget(QtWidgets.QLineEdit(), row, 3)
+            grid.addWidget(QtWidgets.QLineEdit(),row,4)
 
             self.vol.append(QtWidgets.QLineEdit(self))
-            grid.addWidget(self.vol[i], row, 4)
+            grid.addWidget(self.vol[i],row,5)
 
             # add textbox to enter flow rates
             self.rates.append(QtWidgets.QLineEdit(self))
-            grid.addWidget(self.rates[i], row, 5)
+            grid.addWidget(self.rates[i],row,6)
 
             # add label to show current flow rates
             self.currflow.append(QtWidgets.QLabel(self))
             self.currflow[i].setAlignment(QtCore.Qt.AlignHCenter)
-            grid.addWidget(self.currflow[i], row, 6)
+            grid.addWidget(self.currflow[i],row,7)
 
             # add label to show current flow rates
             self.voldis.append(QtWidgets.QLabel(self))
             self.voldis[i].setAlignment(QtCore.Qt.AlignHCenter)
-            grid.addWidget(self.voldis[i], row, 7)
+            grid.addWidget(self.voldis[i], row, 8)
 
             # add run button
-            btn = QtWidgets.QPushButton('Run Prog', self)
-            btn.setCheckable(True)  # makes the button toggleable
-            self.runmapper.setMapping(btn, i)
+            btn = QtWidgets.QPushButton('Run Prog',self)
+            btn.setCheckable(True)# makes the button toggleable
+            self.runmapper.setMapping(btn,i)
             btn.clicked.connect(self.runmapper.map)
-            grid.addWidget(btn, row, 8)
+            grid.addWidget(btn,row,9)
             self.run_btns.append(btn)
 
             # add run manual button
-            btn = QtWidgets.QPushButton('Run Man', self)
+            btn = QtWidgets.QPushButton('Run Man at port',self)
             btn.setCheckable(True)
-            self.runmanmapper.setMapping(btn, i)
+            self.runmanmapper.setMapping(btn,i)
             btn.clicked.connect(self.runmanmapper.map)
-            grid.addWidget(btn, row, 9)
+            grid.addWidget(btn,row,10)
             self.run_man_btns.append(btn)
 
+
             # add stop button
-            btn = QtWidgets.QPushButton('Stop', self)
-            btn.setCheckable(False)  # makes the button toggleable
-            self.stopmapper.setMapping(btn, i)
+            btn = QtWidgets.QPushButton('Stop',self)
+            btn.setCheckable(False)# makes the button toggleable
+            self.stopmapper.setMapping(btn,i)
             btn.clicked.connect(self.stopmapper.map)
-            grid.addWidget(btn, row, 10)
+            grid.addWidget(btn,row,11)
             self.stop_btns.append(btn)
 
+            """
             # # add prime button
             # btn = QtWidgets.QPushButton('Prime',self)
             # btn.setCheckable(True)# makes the button toggleable
@@ -162,35 +185,37 @@ class PumpControl(QtWidgets.QWidget):
             # btn.clicked.connect(self.primemapper.map)
             # grid.addWidget(btn,row,8)
             # self.prime_btns[i] = btn
+            """
 
         # mapper thing
         self.mapper.mapped.connect(self.set_program)
+        self.portmapper.mapped.connect(self.set_port)
         self.dirmapper.mapped.connect(self.set_dir)
         self.runmapper.mapped.connect(self.run_pump_prog)
         self.runmanmapper.mapped.connect(self.run_pump_manual)
         self.stopmapper.mapped.connect(self.stop_pump)
-        # self.primemapper.mapped.connect(self.prime_pumps)
+         # self.primemapper.mapped.connect(self.prime_pumps)
 
         # set up the status bar
         self.curr_state = 'add later'
         self.statusbar = QtWidgets.QLabel(self)
-        grid.addWidget(self.statusbar, 1, 4)
-        self.statusbar.setText('Status: ' + self.curr_state)
+        grid.addWidget(self.statusbar,1,4)
+        self.statusbar.setText('Status: '+self.curr_state)
 
         # set up the error bar
         self.error_state = 'None'
         self.errorbar = QtWidgets.QLabel(self)
-        grid.addWidget(self.errorbar, 1, 5)
-        self.errorbar.setText('Error: ' + self.error_state)
-
+        grid.addWidget(self.errorbar,1,5)
+        self.errorbar.setText('Error: '+self.error_state)
+        
         # set up the last command bar
         self.commandbar = QtWidgets.QLabel(self)
-        grid.addWidget(self.commandbar, row + 1, 0, 1, 4)
-
+        grid.addWidget(self.commandbar,row+1,0,1,4)
+        
         # make the prime state: a set containing the priming pumps
         self.prime_state = set()
 
-        # initialize: set all flow rates to zero
+        #initialize: set all flow rates to zero
         # self.run_update()
         # self.stop_all()
         # [self.update_syringe(p) for p in self._pumps]
@@ -201,8 +226,8 @@ class PumpControl(QtWidgets.QWidget):
 
         # format the page
         self.setLayout(grid)
-        self.setWindowTitle('Pump control')
-        # self.setWindowFlags(self.windowFlags() | QtCore.Qt.WindowStaysOnTopHint) # always on top
+        self.setWindowTitle('Pump Valve control')
+        #self.setWindowFlags(self.windowFlags() | QtCore.Qt.WindowStaysOnTopHint) # always on top
         self.show()
 
         serial_lock = threading.Lock()
@@ -210,19 +235,21 @@ class PumpControl(QtWidgets.QWidget):
         #  launch the thread here
         ## This is the end, __init__
         self.check_rates_loop()
-        self.t = threading.Timer(self._update_status_time, self.check_rates_loop)
+        self.t = threading.Timer(self._update_status_time,self.check_rates_loop)
         self.t.start()
 
     def set_program(self, i):
         self._prog[i] = self.mapper.mapping(i).currentText()
-        # self._prog_dict[]
-        print('just change the program of pump {} to {}'.format(i, self._prog[i]))
-
+        #self._prog_dict[]
+        print('just change the program of pump {} to {}'.format(i,self._prog[i]))
+    def set_port(self,i):
+        self._port[i] = self.portmapper.mapping(i).currentText()
+        self._pv_units[i].moveToPort(int(self._port[i]))
     def set_dir(self, i):
         self._dir[i] = self.dirmapper.mapping(i).currentText()
         self._pumps[i]._direction = self._dir[i]
 
-    def set_vol(self, i):  # must be reset the run command to take effect
+    def set_vol(self,i): # must be reset the run command to take effect
         self._vol[i] = self.mappervol.mapping(i).currentText()
 
     def run_pump_prog(self, i):
@@ -239,48 +266,46 @@ class PumpControl(QtWidgets.QWidget):
                     print('pump halted but button is checked')
             print('I''m running pump {} '.format(i))
             # send seq of commands
-            if self._prog[i] != 'pulse w/ w' and self._prog[i] != 'wash' and self._prog[i] != 'chai' and self._prog[
-                i] != 'capstone':
+            if self._prog[i] != 'pulse w/ w' and self._prog[i] != 'wash' and self._prog[i] != 'chai' and self._prog[i] != 'capstone':
                 print('got to 1')
                 this_prog = self._prog_dict[self._prog[i]]
                 print('got to 2')
-                volploop = this_prog['pulse rate'] * this_prog['pulse duration'] + this_prog['flow rate'] * this_prog[
-                    'pulse frequency']
+                volploop = this_prog['pulse rate'] * this_prog['pulse duration'] + this_prog['flow rate'] * this_prog['pulse frequency']
                 print('got to 3')
                 '''check to see if there is enough volume for a loop'''
-                if int(str(self.vol[i].text())) <= volploop * 2:
+                if int(str(self.vol[i].text())) <= volploop*2:
                     self.run_btns[i].setChecked(False)
                     self.error_state = 'pump {}: not enough vol for prog'.format(i)
                     self.errorbar.setText('Error: ' + self.error_state)
                     print('got to 3.5')
                 else:
-                    loops = round(int(str(self.vol[i].text())) / volploop) - 1
+                    loops = round(int(str(self.vol[i].text()))/volploop) - 1
                     print('got to 4')
                     self._lock.acquire()
                     self._pumps[i].sendCommand('PHN  1')
                     self._pumps[i].sendCommand('FUN RAT')
-                    self._pumps[i].sendCommand('RAT {} {}'.format(this_prog['pulse rate'], 'UM'))
+                    self._pumps[i].sendCommand('RAT {} {}'.format(this_prog['pulse rate'],'UM'))
                     self._pumps[i].sendCommand('VOL {}'.format(this_prog['pulse rate'] * this_prog['pulse duration']))
                     self._pumps[i].sendCommand('DIR INF')
-                    # ('phase 2')
+                #('phase 2')
 
                     self._pumps[i].sendCommand('PHN  2')
                     self._pumps[i].sendCommand('FUN RAT')
-                    self._pumps[i].sendCommand('RAT {} {}'.format(this_prog['flow rate'], 'UM'))
+                    self._pumps[i].sendCommand('RAT {} {}'.format(this_prog['flow rate'],'UM'))
                     self._pumps[i].sendCommand('VOL {}'.format(this_prog['flow rate'] * this_prog['pulse frequency']))
                     self._pumps[i].sendCommand('DIR INF')
-                    # print('phase 3')
+                #print('phase 3')
 
                     self._pumps[i].sendCommand('PHN  3')
                     self._pumps[i].sendCommand('FUN LOP {}'.format(loops))
-                    # print('phase 4')
+                #print('phase 4')
 
                     self._pumps[i].sendCommand('PHN  4')
                     self._pumps[i].sendCommand('FUN STP')
                     self._lock.release()
                     self._pumps[i].run()
 
-            elif self._prog[i] == 'pulse w/ w':  ## not complete
+            elif self._prog[i] == 'pulse w/ w': ## not complete
                 pasT = 3
                 self._lock.acquire()
 
@@ -291,15 +316,15 @@ class PumpControl(QtWidgets.QWidget):
                 self._pumps[i].sendCommand('FUN PAS 60')
 
                 self._pumps[i].sendCommand('PHN  3')
-                self._pumps[i].sendCommand('FUN LOP 3')  # loop the 60s pause 5 times
+                self._pumps[i].sendCommand('FUN LOP 3') # loop the 60s pause 5 times
 
-                self._pumps[i].sendCommand('PHN  4')  # pulse flow 1
+                self._pumps[i].sendCommand('PHN  4') # pulse flow 1
                 self._pumps[i].sendCommand('FUN RAT')
                 self._pumps[i].sendCommand('RAT {} {}'.format(str(100), 'UM'))
                 self._pumps[i].sendCommand('VOL {}'.format(str(34)))
                 self._pumps[i].sendCommand('DIR INF')
 
-                self._pumps[i].sendCommand('PHN  5')  # reg flow1
+                self._pumps[i].sendCommand('PHN  5') # reg flow1
                 self._pumps[i].sendCommand('FUN RAT')
                 self._pumps[i].sendCommand('RAT {} {}'.format(str(3), 'UM'))
                 self._pumps[i].sendCommand('VOL {}'.format(str(59)))
@@ -326,7 +351,7 @@ class PumpControl(QtWidgets.QWidget):
                 self._pumps[i].sendCommand('PHN  9')  # reg flow 3
                 self._pumps[i].sendCommand('FUN RAT')
                 self._pumps[i].sendCommand('RAT {} {}'.format(str(3), 'UM'))
-                self._pumps[i].sendCommand('VOL {}'.format(str(int(round(3 * (19.5 - pasT), 0)))))
+                self._pumps[i].sendCommand('VOL {}'.format(str(int(round(3*(19.5-pasT),0)))))
                 self._pumps[i].sendCommand('DIR INF')
 
                 self._pumps[i].sendCommand('PHN  10')
@@ -343,6 +368,7 @@ class PumpControl(QtWidgets.QWidget):
                 self._lock.acquire()
                 print('got to 1')
 
+
                 self._pumps[i].sendCommand('PHN  1')
                 self._pumps[i].sendCommand('FUN LPS')
                 print('got to 2')
@@ -350,7 +376,7 @@ class PumpControl(QtWidgets.QWidget):
                 self._pumps[i].sendCommand('FUN LPS')
 
                 print('got to 3')
-                self._pumps[i].sendCommand('PHN  3')  # phase 2-4 are pull species x
+                self._pumps[i].sendCommand('PHN  3') # phase 2-4 are pull species x
                 print('')
                 self._pumps[i].sendCommand('FUN RAT')
                 print('got to 3.1')
@@ -361,17 +387,17 @@ class PumpControl(QtWidgets.QWidget):
                 self._pumps[i].sendCommand('DIR WDR')
                 print('got to 4')
                 self._pumps[i].sendCommand('PHN  4')
-                self._pumps[i].sendCommand('FUN  BEP')  # switch species valve here
+                self._pumps[i].sendCommand('FUN  BEP') # switch species valve here
                 print('got to 5')
 
                 self._pumps[i].sendCommand('PHN  5')
                 self._pumps[i].sendCommand('FUN  PAS 10')
 
                 self._pumps[i].sendCommand('PHN  6')
-                self._pumps[i].sendCommand('FUN LOP 4')  # 4 species rotations
+                self._pumps[i].sendCommand('FUN LOP 4') #4 species rotations
 
                 self._pumps[i].sendCommand('PHN  7')
-                self._pumps[i].sendCommand('FUN  BEP')  # switch syringe valve here
+                self._pumps[i].sendCommand('FUN  BEP') # switch syringe valve here
 
                 self._pumps[i].sendCommand('PHN  8')
                 self._pumps[i].sendCommand('FUN  BEP')
@@ -421,7 +447,7 @@ class PumpControl(QtWidgets.QWidget):
                 rate1 = volume1 * 60
                 rate2 = volume2 * 60
                 rate3 = volume3 * 60
-                # add total run volume
+                #add total run volume
                 print('got to 1')
 
                 self._pumps[i].sendCommand('PHN  1')
@@ -464,7 +490,7 @@ class PumpControl(QtWidgets.QWidget):
                 self._pumps[i].sendCommand('VOL 100')
                 self._pumps[i].sendCommand('DIR INF')
 
-                # add loop for total time scale
+                #add loop for total time scale
 
                 self._pumps[i].sendCommand('PHN  10')
                 self._pumps[i].sendCommand('FUN STP')
@@ -475,29 +501,29 @@ class PumpControl(QtWidgets.QWidget):
                 print('got to 5')
 
 
-            elif self._prog[i] == 'wash':  # not complete, hardcoded, not using json
-                # loopVol = pulseRate*pulseTime + flowRate*flowTime
-                # loops = 10 # self.vole[i] / loopVol
+            elif self._prog[i] == 'wash': # not complete, hardcoded, not using json
+                #loopVol = pulseRate*pulseTime + flowRate*flowTime
+                #loops = 10 # self.vole[i] / loopVol
 
-                pasT = 3  # min
+                pasT = 3  #min
                 self._lock.acquire()
                 self._pumps[i].sendCommand('PHN  1')
                 self._pumps[i].sendCommand('FUN RAT')
-                self._pumps[i].sendCommand('RAT {} {}'.format(str(50), 'UM'))
-                self._pumps[i].sendCommand('VOL {}'.format(str(int(round(50 * pasT, 0)))))
+                self._pumps[i].sendCommand('RAT {} {}'.format(str(50),'UM'))
+                self._pumps[i].sendCommand('VOL {}'.format(str(int(round(50*pasT,0)))))
                 self._pumps[i].sendCommand('DIR INF')
 
                 self._pumps[i].sendCommand('PHN  2')
                 self._pumps[i].sendCommand('FUN LPS')
 
                 self._pumps[i].sendCommand('PHN  3')
-                self._pumps[i].sendCommand('FUN PAS 60')  # change loop time
+                self._pumps[i].sendCommand('FUN PAS 60') #change loop time
 
                 self._pumps[i].sendCommand('PHN  4')
-                self._pumps[i].sendCommand('FUN LOP 57')  # loop the 60s pause 55 times
+                self._pumps[i].sendCommand('FUN LOP 57') # loop the 60s pause 55 times
 
                 self._pumps[i].sendCommand('PHN  5')
-                self._pumps[i].sendCommand('FUN LOP 15')  # 15 hour loop
+                self._pumps[i].sendCommand('FUN LOP 15') #15 hour loop
 
                 self._pumps[i].sendCommand('PHN  6')
                 self._pumps[i].sendCommand('FUN STP')
@@ -511,10 +537,10 @@ class PumpControl(QtWidgets.QWidget):
             if self._pumps[i].getStatus() != 'halted':
                 self._pumps[i].stop()
 
-    def run_pump_manual(self, i):  ## STILL NEED TO ADD: if there is not rate entered do nothing
+    def run_pump_manual(self, i): ## STILL NEED TO ADD: if there is not rate entered do nothing
         print('trying pump manual {} '.format(i))
         try:
-            if int(self.vol[i].text()) == 0 or self.vol[i].text() == '':
+            if int(self.vol[i].text()) == 0 or  self.vol[i].text() == '':
                 raise ValueError
             if self.run_man_btns[i].isChecked():
                 print('run man pump {}'.format(i))
@@ -524,26 +550,18 @@ class PumpControl(QtWidgets.QWidget):
                     self._pumps[i].stop()
                 rate = str(self.rates[i].text())
                 vol = str(self.vol[i].text())
-                print('rate is {}'.format(rate))  # str(self.rates[i].text())))
-                print('vol to dispense {}'.format(vol))  # str(self.vol[i].text())))
-
-                self._pumps[i].singlePhaseProgram(rate, vol, self._dir[i])
-                # self._pumps[i]._write_read('FUN RAT')
-                # self._pumps[i].setRate(str(self.rates[i].text()))
-                # self._pumps[i].setVolume(str(self.vol[i].text()))
-                # self._pumps[i].setDirection(self._dir[i])
-                # self._pumps[i]._write_read('DIR WDR')
-                # self._pumps[i]._write_read('DIR INF')
-                # self._pumps[i].run()
-                # print(type(self.vol[i].text()))
+                print('rate is {}'.format(rate)) #str(self.rates[i].text())))
+                print('vol to dispense {}'.format(vol)) #str(self.vol[i].text())))
+                self._valves[i].moveToPort(self._port[i])
+                self._pumps[i].singlePhaseProgram(rate,vol,self._dir[i])
             else:
                 if self._pumps[i].getStatus() != 'halted':
                     self._pumps[i].stop()
         except ValueError:
-            self.error_state = 'volume  for pump {} must be a non zero int'.format(i)
-            print('volume  for pump {} must be a non zero int'.format(i))
-            self.run_man_btns[i].setChecked(False)
-            self.errorbar.setText('Error: ' + self.error_state)
+             self.error_state = 'volume  for pump {} must be a non zero int'.format(i)
+             print('volume  for pump {} must be a non zero int'.format(i))
+             self.run_man_btns[i].setChecked(False)
+             self.errorbar.setText('Error: ' + self.error_state)
 
     def stop_pump(self, i):
         print('Trying to stop pump {} '.format(i))
@@ -552,11 +570,11 @@ class PumpControl(QtWidgets.QWidget):
         if self._pumps[i].getStatus() != 'halted':
             print('Stopping pump {} '.format(i))
             self._pumps[i].stop()
-            # self.run_btns[i].setChecked(False)
+            #self.run_btns[i].setChecked(False)
 
     def check_rates_loop(self):
-        for i, p in enumerate(self._pumps):
-            # voldisp = p.get
+        for i,p in enumerate(self._pumps):
+            #voldisp = p.get
             stat = p.getStatus()
             if stat != 'infusing' and stat != 'withdrawing':
                 self.currflow[i].setText(str(0))
@@ -564,32 +582,31 @@ class PumpControl(QtWidgets.QWidget):
             else:
                 self.currflow[i].setText(p.getRate())
                 self.voldis[i].setText(p.getDispensed())
-        self.t = threading.Timer(self._update_status_time, self.check_rates_loop)
+        self.t = threading.Timer(self._update_status_time,self.check_rates_loop)
         self.t.start()
-
 
 def main_ui():
     try:
-        if (len(sys.argv) > 1):
+        if (len(sys.argv)>1):
             fp = open(sys.argv[1])
         else:
             fp = open('mypumps3.json')
         pump_config = json.load(fp)
         fp.close()
     except IOError:
-        print('config file not found')
+        print ('config file not found')
         sys.exit(0)
 
-    programs = {x['name']: x for x in pump_config['programs']}
-    ser = serial.Serial(baudrate=19200, timeout=0.1, port='COM1')
+    programs = {x['name']:x for x in pump_config['programs']}
+    ser = serial.Serial(baudrate=19200,timeout=0.1,port='COM1')
     print(ser.is_open)
 
     pumps = []
     for c in pump_config['pumps']:
-        pumps.append(Pump(ser, c))
+        pumps.append(Pump(ser,c))
 
     app = QtWidgets.QApplication(sys.argv)
-    ex = PumpControl(ser, pumps, programs)
+    ex = PumpControl(ser,pumps,programs)
     ret = app.exec_()
     ex.t.cancel()
     sys.exit(ret)

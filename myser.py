@@ -16,7 +16,7 @@ def main_ui():
         if (len(sys.argv)>1):
             fp = open(sys.argv[1])
         else:
-            fp = open('mypumps1.json')
+            fp = open('mypumps2.json')
         pump_config = json.load(fp)
         fp.close()
     except IOError:
@@ -31,8 +31,21 @@ def main_ui():
     for c in pump_config['pumps']:
         pumps.append(pm.Pump(ser,c))
 
+    """Init the labsmith objects """
+    eib = ls.EIB200(COM=5)
+
+    valves_COM_lock = threading.Lock()
+    pumps_COM_lock = threading.Lock()
+
+    myPump1 = pumps[0]
+    #myPump1.setLock(pumps_COM_lock)
+    myValve1 = ls.Valve(eib.ls4vm, channel = 1)#, lock=valves_COM_lock)
+    myValve2 = ls.Valve(eib.ls4vm, channel = 2)
+    valves = [myValve1,myValve2]
+
+    print('valves', valves)
     app = QtWidgets.QApplication(sys.argv)
-    ex = pc.PumpControl(ser,pumps,programs)
+    ex = pvc.PumpValveControl(ser,pumps,valves,programs)
     ret = app.exec_()
     ex.t.cancel()
     sys.exit(ret)
@@ -92,28 +105,16 @@ def main_test(sleeptime=None):
     print(allrates)
 
 
-        #print(p.getDirection())
-
-    # if sleeptime is not None:
-    #     print('running...')
-    #     time.sleep(sleeptime)
-    #     print('timer done')
-    #     for p in pumps:
-    #         print(p.getStatus())
-    #         if p.getStatus() != 'halted':
-    #             p.stop()
-    #             print('I had to stop pump {} at exit.'.format(p.getAddress()))
-    #     print('pump at ADR {} infused {}'.format(p.getAddress(),p.getInfused()))
-
-    # ser.close()
-    # print(ser.is_open)
     for p in pumps:
         p.stop()
 
     ser.close()
 
     return ser, pumps
+
+
 def testvalve():
+    """open the json"""
     try:
         if (len(sys.argv)>1):
             fp = open(sys.argv[1])
@@ -124,39 +125,49 @@ def testvalve():
     except IOError:
         print ('config file not found')
         sys.exit(0)
-
     programs = {x['name']:x for x in pump_config['programs']}
+
+    """Open serial port to pumps and init pump objects"""
     ser = serial.Serial(baudrate=19200,timeout=0.1,port='COM4')
     print(ser.is_open)
 
     pumps = []
     for c in pump_config['pumps']:
         pumps.append(pm.Pump(ser,c))
+    """Init the labsmith objects """
+    eib = ls.EIB200(COM = 5)
 
-    eib = ls.EIB200(5)
-    myValve = ls.Valve(eib.ls4vm,1)
-    myValve.moveToPort(1)
-    time.sleep(2)
-    pumps[2].singlePhaseProgram(100,200,'Withdraw')
+    valves_COM_lock = threading.Lock()
+    pumps_COM_lock = threading.Lock()
 
-    # print(myValve.getStatus())
-    # print('move to 1')
-    # myValve.moveToPort(1)
-    # for i in range(50):
-    #     print(myValve.getStatus())
-    # print('move to 6')
-    # print(myValve.getStatus())
-    # myValve.moveToPort(6)
-    # for i in range(50):
-    #     print(myValve.getStatus())
+    myPump1 = pumps[0]
+    myPump1.setLock(pumps_COM_lock)
+    myValve1 = ls.Valve(eib.ls4vm,channel = 1, lock = valves_COM_lock)
+    myPV1 = PumpValve(myValve1,myPump1,1)
+
+
+    """run the test"""
+    myPV1.moveToPort(7)
+    myPV1.runPumpPhase(100,100,'Infuse')
+
+    #pumps[2].singlePhaseProgram(100,200,'Withdraw')
+
+
 
 if __name__ == '__main__':
     # from Pump import*
     # from PumpControl import*
     import Pump as pm
-    import PumpControl as pc
+    import PumpValveControl as pvc
+
+    import labsmith as ls
+    import PumpValve
+    import threading
+    from PumpValve import PumpValve
     #main_test(10)
     main_ui()
 
-    #import labsmith as ls
+    #print(sys.argv[0])
+
+
     #testvalve()
