@@ -48,5 +48,10 @@
     "pulse rate":  100.0,
     "pulse duration":  10.0,
     "pulse frequency":  30.0
+  },
+   { "name":  "sequence",
+     "Phases": [{"port": 6,"rate": 100,"vol": 50,"dir":"Withdraw"},
+       {"port": 7,"rate": 100,"vol": 50,"dir":"Withdraw"},
+       {"port": 8,"rate": 100,"vol": 100,"dir":"Infuse"}]
   }
  ]}

@@ -13,8 +13,10 @@ class Valve:
         self.ls4vm = ls4vm
         self.channel = channel
         self.lock = lock
+        self.current_port = 1
 
     def moveToPort(self,port):
+        print("labsmith valve obj, moving to port {}".format(port))
         moving = True
         while moving:
             if self.lock is not None:
@@ -25,9 +27,13 @@ class Valve:
                 self.lock.release()
             moving = C4VM.IsMoving(s)
             print(moving, C4VM.GetSelection(s))
+        self.setPort(port)
 
     def getStatus(self):
         return self.ls4vm.GetValveStatus(1)
 
     def setLock(self,lock):
         self.lock = lock
+
+    def setPort(self,port):
+        self.current_port = port

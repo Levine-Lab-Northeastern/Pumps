@@ -32,6 +32,7 @@ class PumpValveControl(QtWidgets.QWidget):
         for j,(p,v) in enumerate(zip(pumps,valves)):
             self._pv_units.append(PumpValve(v, p, j))
 
+
         self._prog_dict = prog_dict
         self._update_status_time = 4
         self.initUI()
@@ -266,7 +267,11 @@ class PumpValveControl(QtWidgets.QWidget):
                     print('pump halted but button is checked')
             print('I''m running pump {} '.format(i))
             # send seq of commands
-            if self._prog[i] != 'pulse w/ w' and self._prog[i] != 'wash' and self._prog[i] != 'chai' and self._prog[i] != 'capstone':
+            if self._prog[i] == 'sequence':
+                print("starting PV sequence")
+                self._pv_units[i].runSequence(self._prog_dict[self._prog[i]])
+
+            if self._prog[i] != 'pulse w/ w' and self._prog[i] != 'wash' and self._prog[i] != 'chai' and self._prog[i] !='capstone' and self._prog[i] !='sequence':
                 print('got to 1')
                 this_prog = self._prog_dict[self._prog[i]]
                 print('got to 2')
@@ -552,7 +557,7 @@ class PumpValveControl(QtWidgets.QWidget):
                 vol = str(self.vol[i].text())
                 print('rate is {}'.format(rate)) #str(self.rates[i].text())))
                 print('vol to dispense {}'.format(vol)) #str(self.vol[i].text())))
-                self._valves[i].moveToPort(self._port[i])
+                #self._valves[i].moveToPort(self._port[i])
                 self._pumps[i].singlePhaseProgram(rate,vol,self._dir[i])
             else:
                 if self._pumps[i].getStatus() != 'halted':
@@ -573,15 +578,24 @@ class PumpValveControl(QtWidgets.QWidget):
             #self.run_btns[i].setChecked(False)
 
     def check_rates_loop(self):
-        for i,p in enumerate(self._pumps):
-            #voldisp = p.get
-            stat = p.getStatus()
-            if stat != 'infusing' and stat != 'withdrawing':
+        for i,um in enumerate(self._pv_units):
+            pump_status = um.pump.getStatus()
+            if not um.running_seq and pump_status != 'infusing' and pump_status != 'withdrawing':
                 self.currflow[i].setText(str(0))
                 self.run_man_btns[i].setChecked(False)
+                self.run_btns[i].setChecked(False)
             else:
-                self.currflow[i].setText(p.getRate())
-                self.voldis[i].setText(p.getDispensed())
+                self.currflow[i].setText(um.pump.getRate())
+                self.voldis[i].setText(um.pump.getDispensed())
+        # for i,p in enumerate(self._pumps):
+        #     #voldisp = p.get
+        #     stat = p.getStatus()
+        #     if stat != 'infusing' and stat != 'withdrawing':
+        #         self.currflow[i].setText(str(0))
+        #         self.run_man_btns[i].setChecked(False)
+        #     else:
+        #         self.currflow[i].setText(p.getRate())
+        #         self.voldis[i].setText(p.getDispensed())
         self.t = threading.Timer(self._update_status_time,self.check_rates_loop)
         self.t.start()
 
