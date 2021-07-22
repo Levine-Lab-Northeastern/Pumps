@@ -1,5 +1,5 @@
 { "pumps":  [
-      { "address": 6,
+      { "address": 0,
       "diameter" : 14.3,
       "volume" : 6000,
       "rate" : 200,
@@ -41,5 +41,17 @@
     "pulse rate":  100.0,
     "pulse duration":  10.0,
     "pulse frequency":  30.0
+  },
+   { "name":  "sequence",
+     "Phases": [{"port": 4,"rate": 300,"vol": 200,"dir":"Withdraw"},
+       {"port": 6,"rate": 120,"vol": 60,"dir":"Infuse"},
+       {"port": 6,"rate": 6,"vol": 120,"dir":"Infuse"},
+     {"port": 8,"rate": 100,"vol": 25,"dir":"Infuse"}],
+     "Loops": 5
+  },
+   { "name":  "seq fill400",
+     "Phases": [{"port": 4,"rate": 300,"vol": 400,"dir":"Withdraw"},
+       {"port": 6,"rate": 150,"vol": 400,"dir":"Infuse"}],
+     "Loops": 3
   }
  ]}

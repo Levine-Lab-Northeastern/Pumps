@@ -16,7 +16,7 @@ def main_ui():
         if (len(sys.argv)>1):
             fp = open(sys.argv[1])
         else:
-            fp = open('mypumps2.json')
+            fp = open('mypumps1.json')
         pump_config = json.load(fp)
         fp.close()
     except IOError:
@@ -37,11 +37,10 @@ def main_ui():
     #valves_COM_lock = threading.Lock()
     #pumps_COM_lock = threading.Lock()
 
-    #myPump1 = pumps[0]
-    #myPump1.setLock(pumps_COM_lock)
+
     myValve1 = ls.Valve(eib.ls4vm, channel = 1)#, lock=valves_COM_lock)
-    myValve2 = ls.Valve(eib.ls4vm, channel = 2)
-    valves = [myValve1,myValve2]
+#    myValve2 = ls.Valve(eib.ls4vm, channel = 2)
+    valves = [myValve1]#,myValve2]
 
     #print('valves', valves)
     app = QtWidgets.QApplication(sys.argv)

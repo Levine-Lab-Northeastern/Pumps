@@ -29,17 +29,20 @@ class PumpValve:
     def runSequence(self, seq_dict):
         self.seq_dict = seq_dict
         self.running_seq = True
+
         def runSeq(_self,seq_dictionary):
-            for phase in seq_dictionary["Phases"]:
-                print("Current Phase:", phase)
-                _self.RunAtPort(phase["port"], phase["rate"], phase["vol"], phase["dir"])
-                time.sleep(int(phase["vol"] / (phase["rate"] / 60)))
-                pump_Running = True
-                while pump_Running:
-                    status = _self.pump.getStatus()
-                    if status == 'halted':
-                        pump_Running = False
-                _self.running_seq = False
-                print("finished sequence")
+            for loop in range(seq_dictionary["Loops"]):
+                print("starting loop {}".format(loop))
+                for phase in seq_dictionary["Phases"]:
+                    print("Current Phase:", phase)
+                    _self.RunAtPort(phase["port"], phase["rate"], phase["vol"], phase["dir"])
+                    time.sleep(int(phase["vol"] / (phase["rate"] / 60)))
+                    pump_Running = True
+                    while pump_Running:
+                        status = _self.pump.getStatus()
+                        if status == 'halted':
+                            pump_Running = False
+            _self.running_seq = False
+            print("finished sequence")
         k = threading.Thread(target=runSeq, args=(self,seq_dict))
         k.start()

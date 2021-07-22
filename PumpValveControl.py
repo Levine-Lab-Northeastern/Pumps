@@ -270,8 +270,11 @@ class PumpValveControl(QtWidgets.QWidget):
             if self._prog[i] == 'sequence':
                 print("starting PV sequence")
                 self._pv_units[i].runSequence(self._prog_dict[self._prog[i]])
+            if self._prog[i] == 'seq fill400':
+                print("starting PV2 sequence")
+                self._pv_units[i].runSequence(self._prog_dict[self._prog[i]])
 
-            if self._prog[i] != 'pulse w/ w' and self._prog[i] != 'wash' and self._prog[i] != 'chai' and self._prog[i] !='capstone' and self._prog[i] !='sequence':
+            if self._prog[i] != 'pulse w/ w' and self._prog[i] != 'wash' and self._prog[i] != 'chai' and self._prog[i] !='capstone' and self._prog[i] !='sequence' and self._prog[i] !='seq fill400':
                 print('got to 1')
                 this_prog = self._prog_dict[self._prog[i]]
                 print('got to 2')
