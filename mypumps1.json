@@ -53,5 +53,13 @@
      "Phases": [{"port": 4,"rate": 300,"vol": 400,"dir":"Withdraw"},
        {"port": 6,"rate": 150,"vol": 400,"dir":"Infuse"}],
      "Loops": 3
+  },
+   { "name":  "Pull bleach wash",
+     "Phases": [{"port": 3,"rate": 800,"vol": 9000,"dir":"Withdraw"},
+       {"port": 4,"rate": 800,"vol": 2000,"dir":"Infuse"},
+       {"port": 6,"rate": 800,"vol": 2000,"dir":"Infuse"},
+       {"port": 8,"rate": 800,"vol": 2000,"dir":"Infuse"},
+       {"port": 1,"rate": 800,"vol": 2000,"dir":"Infuse"}],
+     "Loops": 1
   }
  ]}

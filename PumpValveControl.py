@@ -265,7 +265,7 @@ class PumpValveControl(QtWidgets.QWidget):
                     self._pumps[i].stop()
                 else:
                     print('pump halted but button is checked')
-            print('I''m running pump {} '.format(i))
+            print('starting program on unit {} '.format(i))
             # send seq of commands
             if self._prog[i] == 'sequence':
                 print("starting PV sequence")
@@ -273,8 +273,12 @@ class PumpValveControl(QtWidgets.QWidget):
             if self._prog[i] == 'seq fill400':
                 print("starting PV2 sequence")
                 self._pv_units[i].runSequence(self._prog_dict[self._prog[i]])
+            if self._prog[i] == 'Pull bleach wash':
+                print("starting wash sequence")
+                self._pv_units[i].runSequence(self._prog_dict[self._prog[i]])
 
-            if self._prog[i] != 'pulse w/ w' and self._prog[i] != 'wash' and self._prog[i] != 'chai' and self._prog[i] !='capstone' and self._prog[i] !='sequence' and self._prog[i] !='seq fill400':
+            if self._prog[i] == 'erin pulse' or self._prog[i] == 'sk low flow' or self._prog[i] == 'pulse no w':
+                    #!= 'pulse w/ w' and self._prog[i] != 'wash' and self._prog[i] != 'chai' and self._prog[i] !='capstone' and self._prog[i] !='sequence' and self._prog[i] !='seq fill400' and self._prog[i] !='Pull bleach wash':
                 print('got to 1')
                 this_prog = self._prog_dict[self._prog[i]]
                 print('got to 2')
