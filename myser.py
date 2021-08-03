@@ -24,7 +24,7 @@ def main_ui():
         sys.exit(0)
 
     programs = {x['name']:x for x in pump_config['programs']}
-    ser = serial.Serial(baudrate=19200,timeout=0.1,port='COM4')
+    ser = serial.Serial(baudrate=19200,timeout=0.1,port='COM4') # com 1 for scope comp, com 4 for bench comp
     print(ser.is_open)
 
     pumps = []
@@ -32,15 +32,15 @@ def main_ui():
         pumps.append(pm.Pump(ser,c))
 
     """Init the labsmith objects """
-    eib = ls.EIB200(COM=5)
+    eib = ls.EIB200(COM=5) # com 5 for bench comp
 
     #valves_COM_lock = threading.Lock()
     #pumps_COM_lock = threading.Lock()
 
 
     myValve1 = ls.Valve(eib.ls4vm, channel = 1)#, lock=valves_COM_lock)
-#    myValve2 = ls.Valve(eib.ls4vm, channel = 2)
-    valves = [myValve1]#,myValve2]
+    myValve2 = ls.Valve(eib.ls4vm, channel = 2)
+    valves = [myValve1,myValve2]
 
     #print('valves', valves)
     app = QtWidgets.QApplication(sys.argv)

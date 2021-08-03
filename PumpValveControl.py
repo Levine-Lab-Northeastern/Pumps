@@ -72,6 +72,8 @@ class PumpValveControl(QtWidgets.QWidget):
         self.runmapper = QtCore.QSignalMapper(self)   # run program
         self.runmanmapper = QtCore.QSignalMapper(self) # run manual
         self.stopmapper = QtCore.QSignalMapper(self) # stop
+        self.dir_pulldown = []
+        self.ports_pulldown = []
         self.currflow = []
         self.voldis = []
         self.vol = []
@@ -119,6 +121,7 @@ class PumpValveControl(QtWidgets.QWidget):
             combo_port = QtWidgets.QComboBox(self)
             for p in range(8):
                 combo_port.addItem(str(p+1))
+            self.ports_pulldown.append(combo_port)
             self.portmapper.setMapping(combo_port, i)
             combo_port.activated.connect(self.portmapper.map)
             grid.addWidget(combo_port, row, 2)
@@ -128,6 +131,7 @@ class PumpValveControl(QtWidgets.QWidget):
             combo_dir = QtWidgets.QComboBox(self)
             combo_dir.addItem('Infuse')
             combo_dir.addItem('Withdraw')
+            self.dir_pulldown.append(combo_dir)
             self.dirmapper.setMapping(combo_dir, i)
             combo_dir.activated.connect(self.dirmapper.map)
             grid.addWidget(combo_dir, row, 3)
@@ -289,7 +293,7 @@ class PumpValveControl(QtWidgets.QWidget):
                     self.run_btns[i].setChecked(False)
                     self.error_state = 'pump {}: not enough vol for prog'.format(i)
                     self.errorbar.setText('Error: ' + self.error_state)
-                    print('got to 3.5')
+                    print('Not enough vol entered for a loop')
                 else:
                     loops = round(int(str(self.vol[i].text()))/volploop) - 1
                     print('got to 4')
@@ -591,9 +595,15 @@ class PumpValveControl(QtWidgets.QWidget):
                 self.currflow[i].setText(str(0))
                 self.run_man_btns[i].setChecked(False)
                 self.run_btns[i].setChecked(False)
+            elif um.running_seq:
+                self.ports_pulldown[i].setCurrentText(str(um.valve.current_port))
+                self.dir_pulldown[i].setCurrentText(str(um.pump.getDirection()))
+                self.currflow[i].setText(um.pump.getRate())
+                self.voldis[i].setText(um.pump.getDispensed())
             else:
                 self.currflow[i].setText(um.pump.getRate())
                 self.voldis[i].setText(um.pump.getDispensed())
+
         # for i,p in enumerate(self._pumps):
         #     #voldisp = p.get
         #     stat = p.getStatus()
