@@ -44,6 +44,8 @@ class PumpValve:
                 print("starting loop {}".format(loop))
                 for phase in seq_dictionary["Phases"]:
                     print("Current Phase:", phase)
+                    # if phase["port"] == -1:
+                        #port =
                     _self.RunAtPort(phase["port"], phase["rate"], phase["vol"], phase["dir"])
                     time.sleep(int(phase["vol"] / (phase["rate"] / 60)))
                     pump_Running = True

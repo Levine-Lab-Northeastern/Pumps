@@ -39,8 +39,8 @@ def main_ui():
 
 
     myValve1 = ls.Valve(eib.ls4vm, channel = 1)#, lock=valves_COM_lock)
-    myValve2 = ls.Valve(eib.ls4vm, channel = 2)
-    valves = [myValve1,myValve2]
+    #myValve2 = ls.Valve(eib.ls4vm, channel = 2)
+    valves = [myValve1]#,myValve2]
 
     #print('valves', valves)
     app = QtWidgets.QApplication(sys.argv)
