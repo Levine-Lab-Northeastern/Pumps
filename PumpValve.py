@@ -31,7 +31,7 @@ class PumpValve:
         self.moveToPort(port)
         self.runPumpPhase(rat,vol,direction)
 
-    def runSequence(self, seq_dict):
+    def runSequence(self, seq_dict, entry_params = None):#port = None, dir = None, vol = None, rat = None):
         """Runs program for the pump valve unit,
         Takes in the program dictionary,
         launches a new thread that sends a sequence of RunAtPort commands
@@ -39,15 +39,22 @@ class PumpValve:
         self.seq_dict = seq_dict
         self.running_seq = True
 
-        def runSeq(_self,seq_dictionary):
+        def runSeq(_self,seq_dictionary,entry_params):# port = None, dir = None, vol = None, rat = None):
             for loop in range(seq_dictionary["Loops"]):
                 print("starting loop {}".format(loop))
                 for phase in seq_dictionary["Phases"]:
                     print("Current Phase:", phase)
-                    # if phase["port"] == -1:
-                        #port =
+                    # if the prog dict has -1 or 'entry', use the entered parameters passed this this function an entry params dict
+                    if phase["port"] == -1:
+                        phase["port"] = entry_params["port"]
+                    if phase["rate"] == -1:
+                        phase["rate"] = entry_params["rate"]
+                    if phase["vol"] == -1:
+                        phase["vol"] = entry_params["vol"]
+                    if phase["dir"] == "Entry":
+                        phase["dir"] = entry_params["dir"]
                     _self.RunAtPort(phase["port"], phase["rate"], phase["vol"], phase["dir"])
-                    time.sleep(int(phase["vol"] / (phase["rate"] / 60)))
+                    time.sleep(int(int(phase["vol"]) / (int(phase["rate"]) / 60)))
                     pump_Running = True
                     while pump_Running:
                         status = _self.pump.getStatus()
@@ -55,5 +62,5 @@ class PumpValve:
                             pump_Running = False
             _self.running_seq = False
             print("finished sequence")
-        k = threading.Thread(target=runSeq, args=(self,seq_dict))
+        k = threading.Thread(target=runSeq, args=(self,seq_dict,entry_params))
         k.start()

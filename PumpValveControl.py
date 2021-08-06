@@ -260,6 +260,7 @@ class PumpValveControl(QtWidgets.QWidget):
     def run_pump_prog(self, i):
         # temporary thing. this thing should actually run the program
         # still need to add check if volume written
+        entry_params = {"port": self._port[i], "rate": self.rates[i].text(),"vol": self.vol[i].text(), "dir": self._dir[i]}
         print('trying pump {} '.format(i))
         print(self.run_btns[i].isChecked())
         if self.run_btns[i].isChecked():
@@ -274,15 +275,22 @@ class PumpValveControl(QtWidgets.QWidget):
             if self._prog[i] == 'sequence':
                 print("starting PV sequence")
                 self._pv_units[i].runSequence(self._prog_dict[self._prog[i]])
+
             if self._prog[i] == 'seq fill400':
                 print("starting PV2 sequence")
                 self._pv_units[i].runSequence(self._prog_dict[self._prog[i]])
+
             if self._prog[i] == 'Pull bleach wash':
                 print("starting wash sequence")
                 self._pv_units[i].runSequence(self._prog_dict[self._prog[i]])
-            if self._prog[i] == 'prime port 8':
-                print("starting wash sequence")
-                self._pv_units[i].runSequence(self._prog_dict[self._prog[i]])
+
+            if self._prog[i] == 'prime port':
+                print("starting seq: {} {}".format(self._prog_dict[self._prog[i]],self._port[i]))
+                self._pv_units[i].runSequence(self._prog_dict[self._prog[i]], entry_params)
+
+            if self._prog[i] == 'dir vol rat all ports':
+                print("starting seq: {}".format(self._prog[i]))
+                self._pv_units[i].runSequence(self._prog_dict[self._prog[i]], entry_params)
 
             if self._prog[i] == 'erin pulse' or self._prog[i] == 'sk low flow' or self._prog[i] == 'pulse no w':
                     #!= 'pulse w/ w' and self._prog[i] != 'wash' and self._prog[i] != 'chai' and self._prog[i] !='capstone' and self._prog[i] !='sequence' and self._prog[i] !='seq fill400' and self._prog[i] !='Pull bleach wash':

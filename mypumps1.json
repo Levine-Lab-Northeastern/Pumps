@@ -62,10 +62,19 @@
        {"port": 1,"rate": 800,"vol": 2000,"dir":"Infuse"}],
      "Loops": 1
   },
-   { "name":  "prime port 8",
-     "Phases": [{"port": 8,"rate": 800,"vol": 400,"dir":"Withdraw"},
+   { "name":  "prime port",
+     "Phases": [{"port": -1,"rate": 800,"vol": 400,"dir":"Withdraw"},
        {"port": 4,"rate": 800,"vol": 500,"dir":"Infuse"},
        {"port": 3,"rate": 800,"vol": 100,"dir":"Withdraw"}],
      "Loops": 3
+  },
+   { "name":  "dir vol rat all ports",
+     "Phases": [{"port": 1,"rate": -1,"vol": -1,"dir":"Entry"},
+       {"port": 2,"rate": -1,"vol": -1,"dir":"Entry"},
+       {"port": 3,"rate": -1,"vol": -1,"dir":"Entry"},
+       {"port": 4,"rate": -1,"vol": -1,"dir":"Entry"},
+       {"port": 6,"rate": -1,"vol": -1,"dir":"Entry"},
+       {"port": 8,"rate": -1,"vol": -1,"dir":"Entry"}],
+     "Loops": 1
   }
  ]}
