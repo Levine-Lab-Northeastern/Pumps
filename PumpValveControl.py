@@ -272,28 +272,30 @@ class PumpValveControl(QtWidgets.QWidget):
                     print('pump halted but button is checked')
             print('starting program on unit {} '.format(i))
             # send seq of commands
-            if self._prog[i] == 'sequence':
-                print("starting PV sequence")
-                self._pv_units[i].runSequence(self._prog_dict[self._prog[i]])
-
-            if self._prog[i] == 'seq fill400':
-                print("starting PV2 sequence")
-                self._pv_units[i].runSequence(self._prog_dict[self._prog[i]])
-
-            if self._prog[i] == 'Pull bleach wash':
-                print("starting wash sequence")
-                self._pv_units[i].runSequence(self._prog_dict[self._prog[i]])
-
-            if self._prog[i] == 'prime port':
-                print("starting seq: {} {}".format(self._prog_dict[self._prog[i]],self._port[i]))
+            if self._prog_dict[self._prog[i]]["type"] == "pumpValve":
                 self._pv_units[i].runSequence(self._prog_dict[self._prog[i]], entry_params)
 
-            if self._prog[i] == 'dir vol rat all ports':
-                print("starting seq: {}".format(self._prog[i]))
-                self._pv_units[i].runSequence(self._prog_dict[self._prog[i]], entry_params)
-
-            if self._prog[i] == 'erin pulse' or self._prog[i] == 'sk low flow' or self._prog[i] == 'pulse no w':
-                    #!= 'pulse w/ w' and self._prog[i] != 'wash' and self._prog[i] != 'chai' and self._prog[i] !='capstone' and self._prog[i] !='sequence' and self._prog[i] !='seq fill400' and self._prog[i] !='Pull bleach wash':
+            elif self._prog_dict[self._prog[i]]["type"] == "pumpOnly":
+            #
+            # if self._prog[i] == 'sequence':
+            #     print("starting PV sequence")
+            #     self._pv_units[i].runSequence(self._prog_dict[self._prog[i]])
+            #
+            # if self._prog[i] == 'seq fill400':
+            #     print("starting PV2 sequence")
+            #     self._pv_units[i].runSequence(self._prog_dict[self._prog[i]])
+            #
+            # if self._prog[i] == 'Pull bleach wash':
+            #     print("starting wash sequence")
+            #     self._pv_units[i].runSequence(self._prog_dict[self._prog[i]])
+            #
+            # if self._prog[i] == 'prime port':
+            #     print("starting seq: {} {}".format(self._prog_dict[self._prog[i]],self._port[i]))
+            #     self._pv_units[i].runSequence(self._prog_dict[self._prog[i]], entry_params)
+            #
+            # if self._prog[i] == 'dir vol rat all ports':
+            #     print("starting seq: {}".format(self._prog[i]))
+            #     self._pv_units[i].runSequence(self._prog_dict[self._prog[i]], entry_params)
                 print('got to 1')
                 this_prog = self._prog_dict[self._prog[i]]
                 print('got to 2')
@@ -332,230 +334,230 @@ class PumpValveControl(QtWidgets.QWidget):
                     self._lock.release()
                     self._pumps[i].run()
 
-            elif self._prog[i] == 'pulse w/ w': ## not complete
-                pasT = 3
-                self._lock.acquire()
-
-                self._pumps[i].sendCommand('PHN  1')
-                self._pumps[i].sendCommand('FUN LPS')
-
-                self._pumps[i].sendCommand('PHN  2')
-                self._pumps[i].sendCommand('FUN PAS 60')
-
-                self._pumps[i].sendCommand('PHN  3')
-                self._pumps[i].sendCommand('FUN LOP 3') # loop the 60s pause 5 times
-
-                self._pumps[i].sendCommand('PHN  4') # pulse flow 1
-                self._pumps[i].sendCommand('FUN RAT')
-                self._pumps[i].sendCommand('RAT {} {}'.format(str(100), 'UM'))
-                self._pumps[i].sendCommand('VOL {}'.format(str(34)))
-                self._pumps[i].sendCommand('DIR INF')
-
-                self._pumps[i].sendCommand('PHN  5') # reg flow1
-                self._pumps[i].sendCommand('FUN RAT')
-                self._pumps[i].sendCommand('RAT {} {}'.format(str(3), 'UM'))
-                self._pumps[i].sendCommand('VOL {}'.format(str(59)))
-                self._pumps[i].sendCommand('DIR INF')
-
-                self._pumps[i].sendCommand('PHN  6')  # pulse flow 2
-                self._pumps[i].sendCommand('FUN RAT')
-                self._pumps[i].sendCommand('RAT {} {}'.format(str(100), 'UM'))
-                self._pumps[i].sendCommand('VOL {}'.format(str(34)))
-                self._pumps[i].sendCommand('DIR INF')
-
-                self._pumps[i].sendCommand('PHN  7')  # reg flow 2
-                self._pumps[i].sendCommand('FUN RAT')
-                self._pumps[i].sendCommand('RAT {} {}'.format(str(3), 'UM'))
-                self._pumps[i].sendCommand('VOL {}'.format(str(59)))
-                self._pumps[i].sendCommand('DIR INF')
-
-                self._pumps[i].sendCommand('PHN  8')  # pulse flow 3
-                self._pumps[i].sendCommand('FUN RAT')
-                self._pumps[i].sendCommand('RAT {} {}'.format(str(100), 'UM'))
-                self._pumps[i].sendCommand('VOL {}'.format(str(34)))
-                self._pumps[i].sendCommand('DIR INF')
-
-                self._pumps[i].sendCommand('PHN  9')  # reg flow 3
-                self._pumps[i].sendCommand('FUN RAT')
-                self._pumps[i].sendCommand('RAT {} {}'.format(str(3), 'UM'))
-                self._pumps[i].sendCommand('VOL {}'.format(str(int(round(3*(19.5-pasT),0)))))
-                self._pumps[i].sendCommand('DIR INF')
-
-                self._pumps[i].sendCommand('PHN  10')
-                self._pumps[i].sendCommand('FUN LOP 15')
-                # print('phase 4')
-
-                self._pumps[i].sendCommand('PHN  11')
-                self._pumps[i].sendCommand('FUN STP')
-
-                self._lock.release()
-                self._pumps[i].run()
-
-            elif self._prog[i] == 'chai':  ## not complete; good enough
-                self._lock.acquire()
-                print('got to 1')
-
-
-                self._pumps[i].sendCommand('PHN  1')
-                self._pumps[i].sendCommand('FUN LPS')
-                print('got to 2')
-                self._pumps[i].sendCommand('PHN  2')
-                self._pumps[i].sendCommand('FUN LPS')
-
-                print('got to 3')
-                self._pumps[i].sendCommand('PHN  3') # phase 2-4 are pull species x
-                print('')
-                self._pumps[i].sendCommand('FUN RAT')
-                print('got to 3.1')
-                self._pumps[i].sendCommand('RAT 300 UM')
-                print('got to 3.2')
-                self._pumps[i].sendCommand('VOL 25')
-                print('got to 3.3')
-                self._pumps[i].sendCommand('DIR WDR')
-                print('got to 4')
-                self._pumps[i].sendCommand('PHN  4')
-                self._pumps[i].sendCommand('FUN  BEP') # switch species valve here
-                print('got to 5')
-
-                self._pumps[i].sendCommand('PHN  5')
-                self._pumps[i].sendCommand('FUN  PAS 10')
-
-                self._pumps[i].sendCommand('PHN  6')
-                self._pumps[i].sendCommand('FUN LOP 4') #4 species rotations
-
-                self._pumps[i].sendCommand('PHN  7')
-                self._pumps[i].sendCommand('FUN  BEP') # switch syringe valve here
-
-                self._pumps[i].sendCommand('PHN  8')
-                self._pumps[i].sendCommand('FUN  BEP')
-
-                self._pumps[i].sendCommand('PHN  9')
-                self._pumps[i].sendCommand('FUN  PAS 10')
-
-                self._pumps[i].sendCommand('PHN  10')  # Infusing sequence of species
-                self._pumps[i].sendCommand('FUN  RAT')
-                self._pumps[i].sendCommand('RAT 20 UM')
-
-                self._pumps[i].sendCommand('VOL 100')
-                self._pumps[i].sendCommand('DIR inf')
-                print('got to 10')
-
-                self._pumps[i].sendCommand('PHN  11')
-                self._pumps[i].sendCommand('FUN  BEP')  # finished round of infusing
-
-                self._pumps[i].sendCommand('PHN  12')
-                self._pumps[i].sendCommand('FUN  BEP')
-
-                self._pumps[i].sendCommand('PHN  13')
-                self._pumps[i].sendCommand('FUN  BEP')
-
-                self._pumps[i].sendCommand('PHN  14')
-                self._pumps[i].sendCommand('FUN  PAS 15')
-
-                self._pumps[i].sendCommand('PHN  15')
-                self._pumps[i].sendCommand('FUN LOP 5')
-
-                self._pumps[i].sendCommand('PHN  16')
-                self._pumps[i].sendCommand('FUN STP')
-                print('got to 16')
-                self._lock.release()
-
-                self._pumps[i].run()
-            elif self._prog[i] == 'capstone':  # not complete, hardcoded, not using json
-                # totalVolume = 100 UL
-                self._lock.acquire()
-                bacteria1 = 25  # userinput
-                bacteria2 = 25  # userinput
-                bacteria3 = 50  # userinput
-                volumeInc = 5  # userinput
-                volume1 = bacteria1 / volumeInc
-                volume2 = bacteria2 / volumeInc
-                volume3 = bacteria3 / volumeInc
-                rate1 = volume1 * 60
-                rate2 = volume2 * 60
-                rate3 = volume3 * 60
-                #add total run volume
-                print('got to 1')
-
-                self._pumps[i].sendCommand('PHN  1')
-                self._pumps[i].sendCommand('FUN LPS')
-
-                self._pumps[i].sendCommand('PHN  2')
-                self._pumps[i].sendCommand('FUN RAT')
-                self._pumps[i].sendCommand('RAT {} {}'.format(str(int(rate1)), 'UM'))
-                self._pumps[i].sendCommand('VOL {}'.format(str(int(volume1))))
-                self._pumps[i].sendCommand('DIR WDR')
-
-                self._pumps[i].sendCommand('PHN  3')
-                self._pumps[i].sendCommand('FUN PAS 1')  # time is valve moving time?
-                print('got to 2')
-                self._pumps[i].sendCommand('PHN  4')
-                self._pumps[i].sendCommand('FUN RAT')
-                self._pumps[i].sendCommand('RAT {} {}'.format(str(int(rate2)), 'UM'))
-                self._pumps[i].sendCommand('VOL {}'.format(str(int(volume2))))
-                self._pumps[i].sendCommand('DIR WDR')
-
-                self._pumps[i].sendCommand('PHN  5')
-                self._pumps[i].sendCommand('FUN PAS 1')  # time is valve moving time?
-
-                self._pumps[i].sendCommand('PHN  6')
-                self._pumps[i].sendCommand('FUN RAT')
-                self._pumps[i].sendCommand('RAT {} {}'.format(str(int(rate3)), 'UM'))
-                self._pumps[i].sendCommand('VOL {}'.format(str(int(volume3))))
-                self._pumps[i].sendCommand('DIR WDR')
-
-                self._pumps[i].sendCommand('PHN  7')
-                self._pumps[i].sendCommand('FUN PAS 1')  # time is valve moving time?
-
-                self._pumps[i].sendCommand('PHN  8')
-                self._pumps[i].sendCommand('FUN LOP 5')  # number of times u pull
-                print('got to 3')
-
-                self._pumps[i].sendCommand('PHN  9')
-                self._pumps[i].sendCommand('FUN RAT')
-                self._pumps[i].sendCommand('RAT 20 UM')
-                self._pumps[i].sendCommand('VOL 100')
-                self._pumps[i].sendCommand('DIR INF')
-
-                #add loop for total time scale
-
-                self._pumps[i].sendCommand('PHN  10')
-                self._pumps[i].sendCommand('FUN STP')
-
-                self._lock.release()
-                print('got to 4')
-                self._pumps[i].run()
-                print('got to 5')
-
-
-            elif self._prog[i] == 'wash': # not complete, hardcoded, not using json
-                #loopVol = pulseRate*pulseTime + flowRate*flowTime
-                #loops = 10 # self.vole[i] / loopVol
-
-                pasT = 3  #min
-                self._lock.acquire()
-                self._pumps[i].sendCommand('PHN  1')
-                self._pumps[i].sendCommand('FUN RAT')
-                self._pumps[i].sendCommand('RAT {} {}'.format(str(50),'UM'))
-                self._pumps[i].sendCommand('VOL {}'.format(str(int(round(50*pasT,0)))))
-                self._pumps[i].sendCommand('DIR INF')
-
-                self._pumps[i].sendCommand('PHN  2')
-                self._pumps[i].sendCommand('FUN LPS')
-
-                self._pumps[i].sendCommand('PHN  3')
-                self._pumps[i].sendCommand('FUN PAS 60') #change loop time
-
-                self._pumps[i].sendCommand('PHN  4')
-                self._pumps[i].sendCommand('FUN LOP 57') # loop the 60s pause 55 times
-
-                self._pumps[i].sendCommand('PHN  5')
-                self._pumps[i].sendCommand('FUN LOP 15') #15 hour loop
-
-                self._pumps[i].sendCommand('PHN  6')
-                self._pumps[i].sendCommand('FUN STP')
-                self._lock.release()
-                self._pumps[i].run()
+            # elif self._prog[i] == 'pulse w/ w': ## not complete
+            #     pasT = 3
+            #     self._lock.acquire()
+            #
+            #     self._pumps[i].sendCommand('PHN  1')
+            #     self._pumps[i].sendCommand('FUN LPS')
+            #
+            #     self._pumps[i].sendCommand('PHN  2')
+            #     self._pumps[i].sendCommand('FUN PAS 60')
+            #
+            #     self._pumps[i].sendCommand('PHN  3')
+            #     self._pumps[i].sendCommand('FUN LOP 3') # loop the 60s pause 5 times
+            #
+            #     self._pumps[i].sendCommand('PHN  4') # pulse flow 1
+            #     self._pumps[i].sendCommand('FUN RAT')
+            #     self._pumps[i].sendCommand('RAT {} {}'.format(str(100), 'UM'))
+            #     self._pumps[i].sendCommand('VOL {}'.format(str(34)))
+            #     self._pumps[i].sendCommand('DIR INF')
+            #
+            #     self._pumps[i].sendCommand('PHN  5') # reg flow1
+            #     self._pumps[i].sendCommand('FUN RAT')
+            #     self._pumps[i].sendCommand('RAT {} {}'.format(str(3), 'UM'))
+            #     self._pumps[i].sendCommand('VOL {}'.format(str(59)))
+            #     self._pumps[i].sendCommand('DIR INF')
+            #
+            #     self._pumps[i].sendCommand('PHN  6')  # pulse flow 2
+            #     self._pumps[i].sendCommand('FUN RAT')
+            #     self._pumps[i].sendCommand('RAT {} {}'.format(str(100), 'UM'))
+            #     self._pumps[i].sendCommand('VOL {}'.format(str(34)))
+            #     self._pumps[i].sendCommand('DIR INF')
+            #
+            #     self._pumps[i].sendCommand('PHN  7')  # reg flow 2
+            #     self._pumps[i].sendCommand('FUN RAT')
+            #     self._pumps[i].sendCommand('RAT {} {}'.format(str(3), 'UM'))
+            #     self._pumps[i].sendCommand('VOL {}'.format(str(59)))
+            #     self._pumps[i].sendCommand('DIR INF')
+            #
+            #     self._pumps[i].sendCommand('PHN  8')  # pulse flow 3
+            #     self._pumps[i].sendCommand('FUN RAT')
+            #     self._pumps[i].sendCommand('RAT {} {}'.format(str(100), 'UM'))
+            #     self._pumps[i].sendCommand('VOL {}'.format(str(34)))
+            #     self._pumps[i].sendCommand('DIR INF')
+            #
+            #     self._pumps[i].sendCommand('PHN  9')  # reg flow 3
+            #     self._pumps[i].sendCommand('FUN RAT')
+            #     self._pumps[i].sendCommand('RAT {} {}'.format(str(3), 'UM'))
+            #     self._pumps[i].sendCommand('VOL {}'.format(str(int(round(3*(19.5-pasT),0)))))
+            #     self._pumps[i].sendCommand('DIR INF')
+            #
+            #     self._pumps[i].sendCommand('PHN  10')
+            #     self._pumps[i].sendCommand('FUN LOP 15')
+            #     # print('phase 4')
+            #
+            #     self._pumps[i].sendCommand('PHN  11')
+            #     self._pumps[i].sendCommand('FUN STP')
+            #
+            #     self._lock.release()
+            #     self._pumps[i].run()
+            #
+            # elif self._prog[i] == 'chai':  ## not complete; good enough
+            #     self._lock.acquire()
+            #     print('got to 1')
+            #
+            #
+            #     self._pumps[i].sendCommand('PHN  1')
+            #     self._pumps[i].sendCommand('FUN LPS')
+            #     print('got to 2')
+            #     self._pumps[i].sendCommand('PHN  2')
+            #     self._pumps[i].sendCommand('FUN LPS')
+            #
+            #     print('got to 3')
+            #     self._pumps[i].sendCommand('PHN  3') # phase 2-4 are pull species x
+            #     print('')
+            #     self._pumps[i].sendCommand('FUN RAT')
+            #     print('got to 3.1')
+            #     self._pumps[i].sendCommand('RAT 300 UM')
+            #     print('got to 3.2')
+            #     self._pumps[i].sendCommand('VOL 25')
+            #     print('got to 3.3')
+            #     self._pumps[i].sendCommand('DIR WDR')
+            #     print('got to 4')
+            #     self._pumps[i].sendCommand('PHN  4')
+            #     self._pumps[i].sendCommand('FUN  BEP') # switch species valve here
+            #     print('got to 5')
+            #
+            #     self._pumps[i].sendCommand('PHN  5')
+            #     self._pumps[i].sendCommand('FUN  PAS 10')
+            #
+            #     self._pumps[i].sendCommand('PHN  6')
+            #     self._pumps[i].sendCommand('FUN LOP 4') #4 species rotations
+            #
+            #     self._pumps[i].sendCommand('PHN  7')
+            #     self._pumps[i].sendCommand('FUN  BEP') # switch syringe valve here
+            #
+            #     self._pumps[i].sendCommand('PHN  8')
+            #     self._pumps[i].sendCommand('FUN  BEP')
+            #
+            #     self._pumps[i].sendCommand('PHN  9')
+            #     self._pumps[i].sendCommand('FUN  PAS 10')
+            #
+            #     self._pumps[i].sendCommand('PHN  10')  # Infusing sequence of species
+            #     self._pumps[i].sendCommand('FUN  RAT')
+            #     self._pumps[i].sendCommand('RAT 20 UM')
+            #
+            #     self._pumps[i].sendCommand('VOL 100')
+            #     self._pumps[i].sendCommand('DIR inf')
+            #     print('got to 10')
+            #
+            #     self._pumps[i].sendCommand('PHN  11')
+            #     self._pumps[i].sendCommand('FUN  BEP')  # finished round of infusing
+            #
+            #     self._pumps[i].sendCommand('PHN  12')
+            #     self._pumps[i].sendCommand('FUN  BEP')
+            #
+            #     self._pumps[i].sendCommand('PHN  13')
+            #     self._pumps[i].sendCommand('FUN  BEP')
+            #
+            #     self._pumps[i].sendCommand('PHN  14')
+            #     self._pumps[i].sendCommand('FUN  PAS 15')
+            #
+            #     self._pumps[i].sendCommand('PHN  15')
+            #     self._pumps[i].sendCommand('FUN LOP 5')
+            #
+            #     self._pumps[i].sendCommand('PHN  16')
+            #     self._pumps[i].sendCommand('FUN STP')
+            #     print('got to 16')
+            #     self._lock.release()
+            #
+            #     self._pumps[i].run()
+            # elif self._prog[i] == 'capstone':  # not complete, hardcoded, not using json
+            #     # totalVolume = 100 UL
+            #     self._lock.acquire()
+            #     bacteria1 = 25  # userinput
+            #     bacteria2 = 25  # userinput
+            #     bacteria3 = 50  # userinput
+            #     volumeInc = 5  # userinput
+            #     volume1 = bacteria1 / volumeInc
+            #     volume2 = bacteria2 / volumeInc
+            #     volume3 = bacteria3 / volumeInc
+            #     rate1 = volume1 * 60
+            #     rate2 = volume2 * 60
+            #     rate3 = volume3 * 60
+            #     #add total run volume
+            #     print('got to 1')
+            #
+            #     self._pumps[i].sendCommand('PHN  1')
+            #     self._pumps[i].sendCommand('FUN LPS')
+            #
+            #     self._pumps[i].sendCommand('PHN  2')
+            #     self._pumps[i].sendCommand('FUN RAT')
+            #     self._pumps[i].sendCommand('RAT {} {}'.format(str(int(rate1)), 'UM'))
+            #     self._pumps[i].sendCommand('VOL {}'.format(str(int(volume1))))
+            #     self._pumps[i].sendCommand('DIR WDR')
+            #
+            #     self._pumps[i].sendCommand('PHN  3')
+            #     self._pumps[i].sendCommand('FUN PAS 1')  # time is valve moving time?
+            #     print('got to 2')
+            #     self._pumps[i].sendCommand('PHN  4')
+            #     self._pumps[i].sendCommand('FUN RAT')
+            #     self._pumps[i].sendCommand('RAT {} {}'.format(str(int(rate2)), 'UM'))
+            #     self._pumps[i].sendCommand('VOL {}'.format(str(int(volume2))))
+            #     self._pumps[i].sendCommand('DIR WDR')
+            #
+            #     self._pumps[i].sendCommand('PHN  5')
+            #     self._pumps[i].sendCommand('FUN PAS 1')  # time is valve moving time?
+            #
+            #     self._pumps[i].sendCommand('PHN  6')
+            #     self._pumps[i].sendCommand('FUN RAT')
+            #     self._pumps[i].sendCommand('RAT {} {}'.format(str(int(rate3)), 'UM'))
+            #     self._pumps[i].sendCommand('VOL {}'.format(str(int(volume3))))
+            #     self._pumps[i].sendCommand('DIR WDR')
+            #
+            #     self._pumps[i].sendCommand('PHN  7')
+            #     self._pumps[i].sendCommand('FUN PAS 1')  # time is valve moving time?
+            #
+            #     self._pumps[i].sendCommand('PHN  8')
+            #     self._pumps[i].sendCommand('FUN LOP 5')  # number of times u pull
+            #     print('got to 3')
+            #
+            #     self._pumps[i].sendCommand('PHN  9')
+            #     self._pumps[i].sendCommand('FUN RAT')
+            #     self._pumps[i].sendCommand('RAT 20 UM')
+            #     self._pumps[i].sendCommand('VOL 100')
+            #     self._pumps[i].sendCommand('DIR INF')
+            #
+            #     #add loop for total time scale
+            #
+            #     self._pumps[i].sendCommand('PHN  10')
+            #     self._pumps[i].sendCommand('FUN STP')
+            #
+            #     self._lock.release()
+            #     print('got to 4')
+            #     self._pumps[i].run()
+            #     print('got to 5')
+            #
+            #
+            # elif self._prog[i] == 'wash': # not complete, hardcoded, not using json
+            #     #loopVol = pulseRate*pulseTime + flowRate*flowTime
+            #     #loops = 10 # self.vole[i] / loopVol
+            #
+            #     pasT = 3  #min
+            #     self._lock.acquire()
+            #     self._pumps[i].sendCommand('PHN  1')
+            #     self._pumps[i].sendCommand('FUN RAT')
+            #     self._pumps[i].sendCommand('RAT {} {}'.format(str(50),'UM'))
+            #     self._pumps[i].sendCommand('VOL {}'.format(str(int(round(50*pasT,0)))))
+            #     self._pumps[i].sendCommand('DIR INF')
+            #
+            #     self._pumps[i].sendCommand('PHN  2')
+            #     self._pumps[i].sendCommand('FUN LPS')
+            #
+            #     self._pumps[i].sendCommand('PHN  3')
+            #     self._pumps[i].sendCommand('FUN PAS 60') #change loop time
+            #
+            #     self._pumps[i].sendCommand('PHN  4')
+            #     self._pumps[i].sendCommand('FUN LOP 57') # loop the 60s pause 55 times
+            #
+            #     self._pumps[i].sendCommand('PHN  5')
+            #     self._pumps[i].sendCommand('FUN LOP 15') #15 hour loop
+            #
+            #     self._pumps[i].sendCommand('PHN  6')
+            #     self._pumps[i].sendCommand('FUN STP')
+            #     self._lock.release()
+            #     self._pumps[i].run()
             else:
                 if self._pumps[i].getStatus() != 'halted':
                     self._pumps[i].stop()

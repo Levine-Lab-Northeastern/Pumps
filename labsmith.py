@@ -38,14 +38,14 @@ class Valve:
             if self.lock is not None:
                 self.lock.release()
             moving = C4VM.IsMoving(s)
-            #print(moving, C4VM.GetSelection(s))
+            print(moving, C4VM.GetSelection(s))
         print("moved to port{}".format(port))
         self.setPort(port)
 
     def getStatus(self):
         """asks the pump what port its on. this one doesnt use the lock because
         it's intended to pe used only in terminal"""
-        return self.ls4vm.GetValveStatus(self.chnnel)
+        return self.ls4vm.GetValveStatus(self.channel)
 
     def setLock(self,lock):
         """adds a lock object to the valve, typicaly passed in from pumpValveControl"""

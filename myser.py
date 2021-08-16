@@ -17,34 +17,55 @@ def main_ui():
             fp = open(sys.argv[1])
         else:
             fp = open('mypumps1.json')
+            pc = open('myprograms.json')
+            main = open('main_config.json')
         pump_config = json.load(fp)
+        prog_config = json.load(pc)
+        main_config = json.load(main)
         fp.close()
+        pc.close()
+        main.close()
     except IOError:
         print ('config file not found')
         sys.exit(0)
-
-    programs = {x['name']:x for x in pump_config['programs']}
-    ser = serial.Serial(baudrate=19200,timeout=0.1,port='COM4') # com 1 for scope comp, com 4 for bench comp
+    """Init pumps"""
+    programs = {x['name']:x for x in prog_config['programs']}
+    pumpPort = main_config["PumpCOM"]
+    ser = serial.Serial(baudrate=19200,timeout=0.1,port=pumpPort) # com 1 for scope comp, com 4 for bench comp
     print(ser.is_open)
 
-    pumps = []
-    for c in pump_config['pumps']:
-        pumps.append(pm.Pump(ser,c))
+
+    pumpsdict = {}
+    for p in range(main_config['NumPumps']):
+        pump = main_config["Pumps"][p]
+        pumpsdict[pump["address"]] = pm.Pump(ser,pump)
+
+    # for c in pump_config['pumps']:
+    #     pumps.append(pm.Pump(ser,c))
 
     """Init the labsmith objects """
+    valvePort = main_config["ValveCOM"]
     eib = ls.EIB200(COM=5) # com 5 for bench comp
+
+    valves = []
+    PVunits = []
+    for v in range(main_config["NumValves"]):
+        valve = main_config["Valves"][v]
+        valves.append(ls.Valve(eib.ls4vm,channel = valve["ValveChannel"]))
+    print(valves)
+        # init pv unit here
+        #PVunits.append(PumpValve.PumpValve(valves[-1],pumpsdict[valves["pumpADR"]]))
 
     #valves_COM_lock = threading.Lock()
     #pumps_COM_lock = threading.Lock()
-
-
-    myValve1 = ls.Valve(eib.ls4vm, channel = 1)#, lock=valves_COM_lock)
+    #myValve1 = ls.Valve(eib.ls4vm, channel = 1)#, lock=valves_COM_lock)
     #myValve2 = ls.Valve(eib.ls4vm, channel = 2)
-    valves = [myValve1]#,myValve2]
+    #valves = [myValve1]#,myValve2]
 
     #print('valves', valves)
+    """need to create a list of units: pv units and solo pumps"""
     app = QtWidgets.QApplication(sys.argv)
-    ex = pvc.PumpValveControl(ser,pumps,valves,programs)
+    ex = pvc.PumpValveControl(ser,pumpsdict.values(),valves,programs)
     ret = app.exec_()
     ex.t.cancel()
     sys.exit(ret)
