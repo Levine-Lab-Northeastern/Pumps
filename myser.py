@@ -45,7 +45,7 @@ def main_ui():
 
     """Init the labsmith objects """
     valvePort = main_config["ValveCOM"]
-    eib = ls.EIB200(COM=5) # com 5 for bench comp
+    eib = ls.EIB200(COM=valvePort) # com 5 for bench comp
 
     valves = []
     PVunits = []
@@ -65,7 +65,7 @@ def main_ui():
     #print('valves', valves)
     """need to create a list of units: pv units and solo pumps"""
     app = QtWidgets.QApplication(sys.argv)
-    ex = pvc.PumpValveControl(ser,pumpsdict.values(),valves,programs)
+    ex = pvc.PumpValveControl(ser,list(pumpsdict.values()),valves,programs)
     ret = app.exec_()
     ex.t.cancel()
     sys.exit(ret)

@@ -43,15 +43,15 @@
     "type" : "pumpValve",
      "Phases": [{"port": 8,"rate": 300,"vol": 150,"dir":"Withdraw"},
        {"port": 6,"rate": 100,"vol": 50,"dir":"Infuse"},
-       {"port": 6,"rate": 4,"vol": 80,"dir":"Infuse"},
-     {"port": 8,"rate": 100,"vol": 25,"dir":"Infuse"}],
-     "Loops": 1
+       {"port": 6,"rate": 5,"vol": 80,"dir":"Infuse"},
+     {"port": 4,"rate": 100,"vol": 25,"dir":"Infuse"}],
+     "Loops": 50
   },
-   { "name":  "seq fill400",
+   { "name":  "fill port 4x400",
     "type" : "pumpValve",
-     "Phases": [{"port": 8,"rate": 800,"vol": 400,"dir":"Withdraw"},
-       {"port": 6,"rate": 150,"vol": 400,"dir":"Infuse"}],
-     "Loops": 4
+     "Phases": [{"port": -1,"rate": 800,"vol": 400,"dir":"Withdraw"},
+       {"port": 6,"rate": 200,"vol": 400,"dir":"Infuse"}, {"port": 4,"rate": 800,"vol": 50,"dir":"Infuse"}],
+     "Loops": 2
   },
    { "name":  "Pull bleach wash",
     "type" : "pumpValve",
@@ -75,8 +75,14 @@
        {"port": 2,"rate": -1,"vol": -1,"dir":"Entry"},
        {"port": 3,"rate": -1,"vol": -1,"dir":"Entry"},
        {"port": 4,"rate": -1,"vol": -1,"dir":"Entry"},
+       {"port": 5,"rate": -1,"vol": -1,"dir":"Entry"},
        {"port": 6,"rate": -1,"vol": -1,"dir":"Entry"},
+       {"port": 7,"rate": -1,"vol": -1,"dir":"Entry"},
        {"port": 8,"rate": -1,"vol": -1,"dir":"Entry"}],
      "Loops": 1
+  },
+   { "name":  "tesypy",
+    "type" : "python code",
+     "Params" : {"vol": 10,"port": 3}
   }
  ]}

@@ -1,5 +1,5 @@
-{"PumpCOM" : "COM4",
-  "ValveCOM" : "COM5",
+{"PumpCOM" : "COM1",
+  "ValveCOM" : 12,
   "NumPumps": 1,
   "NumValves": 1,
   "Pumps":[{"address": 6,"diameter": 14.3,"rate-units" : "UM", "vol-units" : "UL"},

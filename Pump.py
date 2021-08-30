@@ -197,6 +197,7 @@ class Pump(object):
         if match.group('status') == 'A?':
             raise PumpHardwareError(match.group('data'), cmd)
         elif match.group('data').startswith('?'):
+            print(match,match.group)
             raise PumpCommError(match.group('data')[1:], cmd)
         if check_lock and self._check_lock:
             self._lock.release()

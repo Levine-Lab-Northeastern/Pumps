@@ -38,7 +38,7 @@ class Valve:
             if self.lock is not None:
                 self.lock.release()
             moving = C4VM.IsMoving(s)
-            print(moving, C4VM.GetSelection(s))
+            #print(moving, C4VM.GetSelection(s))
         print("moved to port{}".format(port))
         self.setPort(port)
 
