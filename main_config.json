@@ -5,6 +5,6 @@
   "Pumps":[{"address": 2,"diameter": 14.3,"rate-units" : "UM", "vol-units" : "UL"},
     {"address": 0,"diameter": 14.3,"rate-units" : "UM", "vol-units" : "UL"},
     {"address": 3,"diameter": 14.3,"rate-units" : "UM", "vol-units" : "UL"}],
-  "Valves" : [{"pumpADR": 6,"ValveChannel": 1},
+  "Valves" : [{"pumpADR": 2,"ValveChannel": 1},
     {"pumpADR": 3,"ValveChannel": 2}]
 }
