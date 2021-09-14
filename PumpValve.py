@@ -52,25 +52,18 @@ class PumpValve:
                     # if first run is with infuse then next run will also have infused because "entry" will be overwriten
                     # could also use a copy dictionary
                     if phase["port"] == -1:
-                        #phase["port"] = int(entry_params["port"])
                         p = int(entry_params["port"])
                     else: p = phase["port"]
                     if phase["rate"] == -1:
-                        #phase["rate"] = entry_params["rate"]
                         r = int(entry_params["rate"])
                     else: r = phase["rate"]
                     if phase["vol"] == -1:
-                        #phase["vol"] = entry_params["vol"]
                         v = int(entry_params["vol"])
                     else: v = phase["vol"]
                     if phase["dir"] == "Entry":
-                        #phase["dir"] = entry_params["dir"]
                         d = entry_params["dir"]
                     else: d = phase["dir"]
-                    #_self.RunAtPort(phase["port"], phase["rate"], phase["vol"], phase["dir"])
-                    #time.sleep(int(int(phase["vol"]) / (int(phase["rate"]) / 60)))
                     _self.RunAtPort(p, r, v, d)
-                    #time.sleep(int(int(v) / (int(r) / 60)))
                     expect_time = int(int(v) / (int(r) / 60))
                     _self.thread_kill.wait(timeout = expect_time)
                     if _self.thread_kill.is_set():
@@ -88,7 +81,5 @@ class PumpValve:
             _self.thread_kill.clear()
             print("finished sequence")
         self.thread_kill = threading.Event()
-        self.k = threading.Thread(target=runSeq, args=(self,seq_dict,entry_params))#, lambda: self.thread_kill))
+        self.k = threading.Thread(target=runSeq, args=(self,seq_dict,entry_params))
         self.k.start()
-
-    #def testpy(self,name):
