@@ -14,6 +14,8 @@ class PumpValve:
         print('initialized valve at port 1')
         self.running_seq = False
         self.seq_dict = None
+        self.current_phase = "not running seq"
+        self.phaseTargetDispense = 0
 
     def moveToPort(self,port):
         """Moves valve to the port passed in, helper method for RunAtPort"""
@@ -29,7 +31,9 @@ class PumpValve:
 
     def RunAtPort(self,port,rat,vol,direction):
         """moves valve to the input port and sends a single phase program to pump"""
+        self.current_phase = {'p':port,'r':rat,'v':vol,'d':direction}
         self.moveToPort(port)
+        self.phaseTargetDispense = float(self.pump.getDispensed(units = False))+vol
         self.runPumpPhase(rat,vol,direction)
 
     def runSequence(self, seq_dict, entry_params = None):#port = None, dir = None, vol = None, rat = None):
@@ -79,6 +83,7 @@ class PumpValve:
                     break
             _self.running_seq = False
             _self.thread_kill.clear()
+            _self.current_phase = "no seq"
             print("finished sequence")
         self.thread_kill = threading.Event()
         self.k = threading.Thread(target=runSeq, args=(self,seq_dict,entry_params))

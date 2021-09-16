@@ -9,7 +9,7 @@ import sys
 import threading
 from PyQt5 import QtGui, QtCore,  QtWidgets
 from PumpValve import PumpValve
-
+from PV_seq_script import *
 # from Pump import *
 
 #####################################################################
@@ -64,6 +64,7 @@ class PumpValveControl(QtWidgets.QWidget):
         grid.addWidget(QtWidgets.QLabel('Flow rate ul/min'), 2, 6)
         grid.addWidget(QtWidgets.QLabel('Cur rate ul/min'),2,7)
         grid.addWidget(QtWidgets.QLabel('vol dispensed'),2,8)
+        #grid.addWidget(QtWidgets.QLabel('vol dispensed'),2,9)
           
         # interate over pumps, adding a row for each
         self.mapper = QtCore.QSignalMapper(self) # programs
@@ -78,6 +79,8 @@ class PumpValveControl(QtWidgets.QWidget):
         self.voldis = []
         self.vol = []
         self.rates = []
+        self.unitPhase = []
+        self.unitPhaseVolRemainder = []
         # self.prime_btns = dict()
         self.run_btns = []
         self.run_man_btns = []
@@ -93,12 +96,17 @@ class PumpValveControl(QtWidgets.QWidget):
         for i,unit in enumerate(self._pv_units):
             unit.pump.setLock(self._pump_lock)
             unit.valve.setLock(self._valve_lock)
-            row = 3+i
+            row = 3+2*i
             
             # add pump number
             pumplab = QtWidgets.QLabel('Pump #{}'.format(unit.pump.getAddress()))
             pumplab.setAlignment(QtCore.Qt.AlignHCenter)
             grid.addWidget(pumplab,row,0)
+
+            # add label to show the current phase
+            self.unitPhase.append(QtWidgets.QLabel(self))
+            self.unitPhase[i].setAlignment(QtCore.Qt.AlignHCenter)
+            grid.addWidget(self.unitPhase[i], row+1, 0,1,2)
 
             # # add syringe pulldown
             # combo = QtWidgets.QComboBox(self)
@@ -116,6 +124,11 @@ class PumpValveControl(QtWidgets.QWidget):
             combo.activated.connect(self.mapper.map)
             grid.addWidget(combo,row,1)
             self.set_program(i)
+
+            # label to show the remainder volume in phase
+            self.unitPhaseVolRemainder.append(QtWidgets.QLabel(self))
+            self.unitPhaseVolRemainder[i].setAlignment(QtCore.Qt.AlignHCenter)
+            grid.addWidget(self.unitPhaseVolRemainder[i], row + 1, 3)
 
             # add ports pulldown
             combo_port = QtWidgets.QComboBox(self)
@@ -215,7 +228,7 @@ class PumpValveControl(QtWidgets.QWidget):
         
         # set up the last command bar
         self.commandbar = QtWidgets.QLabel(self)
-        grid.addWidget(self.commandbar,row+1,0,1,4)
+        grid.addWidget(self.commandbar,row+2,0,1,4)
         
         # make the prime state: a set containing the priming pumps
         self.prime_state = set()
@@ -336,7 +349,9 @@ class PumpValveControl(QtWidgets.QWidget):
                     self._pumps[i].run()
 
             elif self._prog_dict[self._prog[i]]["type"] == "python code":
-                getattr(self._pv_units[i], self._prog_dict[self._prog[i]]["name"])()
+                #getattr(self._pv_units[i], self._prog_dict[self._prog[i]]["name"])()
+                locals()[self._prog_dict[self._prog[i]]["name"]](self._pv_units[i],self._prog_dict[self._prog[i]]["Params"])
+                # this calls locals()['funcName'](paramsForFunc)
             else:
                 if self._pumps[i].getStatus() != 'halted':
                     self._pumps[i].stop()
@@ -388,15 +403,23 @@ class PumpValveControl(QtWidgets.QWidget):
                 self.currflow[i].setText(str(0))
                 self.run_man_btns[i].setChecked(False)
                 self.run_btns[i].setChecked(False)
+                self.unitPhase[i].setText('')
+                self.unitPhaseVolRemainder[i].setText('')
+
             elif um.running_seq:
                 if pump_status == 'infusing' or pump_status == 'withdrawing':
                     self.dir_pulldown[i].setCurrentText(str(um.pump.getDirection()))
                     self.currflow[i].setText(um.pump.getRate())
                 self.ports_pulldown[i].setCurrentText(str(um.valve.current_port))
                 self.voldis[i].setText(um.pump.getDispensed())
+                self.unitPhase[i].setText(str(um.current_phase))
+                self.unitPhaseVolRemainder[i].setText("V remain"+str(int(um.phaseTargetDispense-float(um.pump.getDispensed(units = False)))))
+
             else:
                 self.currflow[i].setText(um.pump.getRate())
                 self.voldis[i].setText(um.pump.getDispensed())
+                self.unitPhase[i].setText(um.current_phase)
+                #print("4424245"+ um.current_phase)
         self.t = threading.Timer(self._update_status_time,self.check_rates_loop)
         self.t.start()
 

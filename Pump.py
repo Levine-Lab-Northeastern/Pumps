@@ -273,11 +273,14 @@ class Pump(object):
         if SIM: return
         return self._write_read('VOL')['data']
 
-    def getDispensed(self):#, direction):
+    def getDispensed(self,units = True):#, direction):
         res = self._dispensed.match(self._write_read('DIS')['data'])#.decode('utf-8'))
         res = res.groupdict()
         #print(res)
-        return res[self._direction.lower()]+res['units']
+        if units:
+            return res[self._direction.lower()]+res['units']
+        else:
+            return res[self._direction.lower()]
 
     def resetDispensed(self):
         ''' Reset dispense measures '''

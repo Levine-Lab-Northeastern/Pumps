@@ -81,8 +81,8 @@
        {"port": 8,"rate": -1,"vol": -1,"dir":"Entry"}],
      "Loops": 1
   },
-   { "name":  "tesypy",
+   { "name":  "twoPulseType",
     "type" : "python code",
-     "Params" : {"vol": 10,"port": 3}
+     "Params" : {"hours" : 1, "vol": 10,"port": 3}
   }
  ]}
