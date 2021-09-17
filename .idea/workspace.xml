@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28fc2741-f5df-4e11-9de1-990378461daf" name="Default Changelist" comment="added main_config.json and myprograms.json. myser now takes from main_config for the pump and valve addresses and com ports">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mypumps3.json" beforeDir="false" afterPath="$PROJECT_DIR$/mypumps3.json" afterDir="false" />
-    </list>
+    <list default="true" id="28fc2741-f5df-4e11-9de1-990378461daf" name="Default Changelist" comment="added main_config.json and myprograms.json. myser now takes from main_config for the pump and valve addresses and com ports" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,17 +38,17 @@
   </component>
   <component name="RunManager">
     <configuration name="Python conda" type="PythonConfigurationType" factoryName="Python">
-      <module name="Pumps" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\ProgramData\Anaconda3\envs\Pumps38\python.exe" />
+      <option name="SDK_HOME" value="C:\Users\s.kolev\Anaconda3\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/myser.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
