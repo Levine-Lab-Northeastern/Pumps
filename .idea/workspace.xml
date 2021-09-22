@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="54d73e3f-3c22-4637-8456-d245f7c70b3f" name="Default Changelist" comment="committed 2 files from .idea">
+    <list default="true" id="54d73e3f-3c22-4637-8456-d245f7c70b3f" name="Default Changelist" comment="added a mypumps2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pump.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pump.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PumpValve.py" beforeDir="false" afterPath="$PROJECT_DIR$/PumpValve.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PV_seq_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/PV_seq_script.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PumpValveControl.py" beforeDir="false" afterPath="$PROJECT_DIR$/PumpValveControl.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/main_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myprograms.json" beforeDir="false" afterPath="$PROJECT_DIR$/myprograms.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testPyScript.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Valves1" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,17 +44,17 @@
   </component>
   <component name="RunManager">
     <configuration name="Python conda" type="PythonConfigurationType" factoryName="Python">
+      <module name="Pumps" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\s.kolev\Anaconda3\python.exe" />
+      <option name="SDK_HOME" value="C:\ProgramData\Anaconda3\envs\Pumps38\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/myser.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />

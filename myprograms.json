@@ -41,17 +41,18 @@
   },
    { "name":  "sequence",
     "type" : "pumpValve",
-     "Phases": [{"port": 8,"rate": 300,"vol": 150,"dir":"Withdraw"},
+     "Phases": [{"port": 4,"rate": 300,"vol": 150,"dir":"Withdraw"},
        {"port": 6,"rate": 100,"vol": 50,"dir":"Infuse"},
        {"port": 6,"rate": 5,"vol": 80,"dir":"Infuse"},
-     {"port": 4,"rate": 100,"vol": 25,"dir":"Infuse"}],
-     "Loops": 50
+     {"port": 7,"rate": 100,"vol": 25,"dir":"Infuse"}],
+     "Loops": 24
   },
-   { "name":  "fill port 4x400",
+   { "name":  "fill port 4x300",
     "type" : "pumpValve",
-     "Phases": [{"port": -1,"rate": 800,"vol": 400,"dir":"Withdraw"},
-       {"port": 6,"rate": 200,"vol": 400,"dir":"Infuse"}, {"port": 4,"rate": 800,"vol": 50,"dir":"Infuse"}],
-     "Loops": 2
+     "Phases": [{"port": -1,"rate": 800,"vol": 300,"dir":"Withdraw"},
+       {"port": 6,"rate": 200,"vol": 300,"dir":"Infuse"},
+       {"port": 7,"rate": 800,"vol": 50,"dir":"Infuse"}],
+     "Loops": 4
   },
    { "name":  "Pull bleach wash",
     "type" : "pumpValve",
@@ -64,9 +65,9 @@
   },
    { "name":  "prime port",
     "type" : "pumpValve",
-     "Phases": [{"port": -1,"rate": 800,"vol": 400,"dir":"Withdraw"},
-       {"port": 4,"rate": 800,"vol": 500,"dir":"Infuse"},
-       {"port": 3,"rate": 800,"vol": 100,"dir":"Withdraw"}],
+     "Phases": [{"port": -1,"rate": 800,"vol": 300,"dir":"Withdraw"},
+       {"port": 7,"rate": 800,"vol": 400,"dir":"Infuse"},
+       {"port": 1,"rate": 800,"vol": 100,"dir":"Withdraw"}],
      "Loops": 3
   },
    { "name":  "dir vol rat all ports",
@@ -83,6 +84,14 @@
   },
    { "name":  "twoPulseType",
     "type" : "python code",
-     "Params" : {"hours" : 1, "vol": 10,"port": 3}
+     "Params" : {"hours" : 1}
+  },
+   { "name":  "wash_7_port",
+    "type" : "python code",
+     "Params" : {"hours" : 1}
+  },
+   { "name":  "test_script",
+    "type" : "python code",
+     "Params" : {"hours" : 1}
   }
  ]}

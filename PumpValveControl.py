@@ -350,7 +350,14 @@ class PumpValveControl(QtWidgets.QWidget):
 
             elif self._prog_dict[self._prog[i]]["type"] == "python code":
                 #getattr(self._pv_units[i], self._prog_dict[self._prog[i]]["name"])()
-                locals()[self._prog_dict[self._prog[i]]["name"]](self._pv_units[i],self._prog_dict[self._prog[i]]["Params"])
+                # test_script(self._pv_units[i],self._prog_dict[self._prog[i]]["Params"])
+                # print(self._prog_dict[self._prog[i]]["name"])
+                # #locals()[self._prog_dict[self._prog[i]]["name"]](self._pv_units[i],self._prog_dict[self._prog[i]]["Params"])
+                # print('got here')
+                #params = self._prog_dict[self._prog[i]]["Params"]
+                #_7_port_wash(self._pv_units[i], self._prog_dict[self._prog[i]]["Params"])
+                eval(self._prog_dict[self._prog[i]]["name"] + '(self._pv_units[i],self._prog_dict[self._prog[i]]["Params"])')
+
                 # this calls locals()['funcName'](paramsForFunc)
             else:
                 if self._pumps[i].getStatus() != 'halted':
@@ -404,7 +411,7 @@ class PumpValveControl(QtWidgets.QWidget):
                 self.run_man_btns[i].setChecked(False)
                 self.run_btns[i].setChecked(False)
                 self.unitPhase[i].setText('')
-                self.unitPhaseVolRemainder[i].setText('')
+                self.unitPhaseVolRemainder[i].setText("V remain"+str(int(um.phaseTargetDispense-float(um.pump.getDispensed(units = False)))))
 
             elif um.running_seq:
                 if pump_status == 'infusing' or pump_status == 'withdrawing':
