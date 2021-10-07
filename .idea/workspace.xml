@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54d73e3f-3c22-4637-8456-d245f7c70b3f" name="Default Changelist" comment="added a mypumps2">
+    <list default="true" id="54d73e3f-3c22-4637-8456-d245f7c70b3f" name="Default Changelist" comment="PV_seq_script is now working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PV_seq_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/PV_seq_script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PumpValveControl.py" beforeDir="false" afterPath="$PROJECT_DIR$/PumpValveControl.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/main_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myprograms.json" beforeDir="false" afterPath="$PROJECT_DIR$/myprograms.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

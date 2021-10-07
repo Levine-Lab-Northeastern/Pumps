@@ -90,7 +90,23 @@
     "type" : "python code",
      "Params" : {"hours" : 1}
   },
-   { "name":  "test_script",
+   { "name":  "Pluronic_4d",
+    "type" : "python code",
+     "Params" : {"hours" : 1}
+  },
+   { "name":  "p_4d_op50",
+    "type" : "python code",
+     "Params" : {"hours" : 1}
+  },
+   { "name":  "S_wash_4d",
+    "type" : "python code",
+     "Params" : {"hours" : 1}
+  },
+   { "name":  "op50flow",
+    "type" : "python code",
+     "Params" : {"hours" : 1}
+  },
+   { "name":  "jub39_r_switch_g",
     "type" : "python code",
      "Params" : {"hours" : 1}
   }
