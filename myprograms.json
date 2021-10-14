@@ -90,7 +90,7 @@
     "type" : "python code",
      "Params" : {"hours" : 1}
   },
-   { "name":  "Pluronic_4d",
+   { "name":  "Pluronic_3d",
     "type" : "python code",
      "Params" : {"hours" : 1}
   },

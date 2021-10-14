@@ -134,7 +134,9 @@ def wash_7_port(PV,params):
     PV.k.start()
 
 
-def Pluronic_4d(PV,params):
+def Pluronic_3d(PV,params):
+    """loads 200ul and dispenses 50ul/min/device 20 times, then washes with s-media 1.5ml at 100ul/min/device"""
+
     """Runs program for the pump valve unit using complex script here,
                 launches a new thread that sends a sequence of RunAtPort commands
                 and sleeps for the expected pump run time in between"""
@@ -166,9 +168,9 @@ def Pluronic_4d(PV,params):
         for hour in range(params['hours']):
             flag = True
             i = 0
-            while flag and i < 25:
+            while flag and i < 20:
                 flag = RunAtPort_threadCheck(_PV, p=8, r=500, v=200, d='Withdraw') and \
-                       RunAtPort_threadCheck(_PV, p=6, r=200, v=200, d='Infuse') and \
+                       RunAtPort_threadCheck(_PV, p=6, r=150, v=200, d='Infuse') and \
                        RunAtPort_threadCheck(_PV, p=7, r=500, v=50, d='Infuse') and \
                        RunAtPort_threadCheck(_PV, p=1, r=500, v=50, d='Withdraw')
 
@@ -178,11 +180,14 @@ def Pluronic_4d(PV,params):
 
         """s media wash section"""
         print('starting s media wash')
-        flag = True
+        if _PV.thread_kill.is_set():
+            flag = False
+        else:
+            flag = True
         i = 0
         while flag and i < 1:
             flag = RunAtPort_threadCheck(_PV, p=1, r=500, v=1500, d='Withdraw') and \
-                   RunAtPort_threadCheck(_PV, p=6, r=400, v=1500, d='Infuse')
+                   RunAtPort_threadCheck(_PV, p=6, r=300, v=1500, d='Infuse')
             i += 1
         _PV.running_seq = False
         _PV.thread_kill.clear()
