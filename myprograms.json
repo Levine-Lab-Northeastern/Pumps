@@ -98,11 +98,19 @@
     "type" : "python code",
      "Params" : {"hours" : 1}
   },
+   { "name":  "p_2d_op50",
+    "type" : "python code",
+     "Params" : {"hours" : 1}
+  },
    { "name":  "S_wash_4d",
     "type" : "python code",
      "Params" : {"hours" : 1}
   },
    { "name":  "op50flow",
+    "type" : "python code",
+     "Params" : {"hours" : 1}
+  },
+   { "name":  "two_bact_flow",
     "type" : "python code",
      "Params" : {"hours" : 1}
   },

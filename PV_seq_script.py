@@ -83,7 +83,7 @@ def wash_7_port(PV,params):
         print('made it into thread')
         def RunAtPort_threadCheck(_PV, p, r, v, d):
             _PV.RunAtPort(p, r, v, d)
-            expect_time = int(int(v) / (int(r) / 60))
+            expect_time = int(int(v) / (int(r) / 60)) +4 # added 4 sec to stabilize the flow before moving the valve
             _PV.thread_kill.wait(timeout=expect_time)
             if _PV.thread_kill.is_set():
                 print("killing thread inner")
@@ -246,6 +246,54 @@ def p_4d_op50(PV,params):
     PV.thread_kill = threading.Event()
     PV.k = threading.Thread(target=runSeqScript, args=(PV, params))
     PV.k.start()
+def p_2d_op50(PV,params):
+    """Runs program for the pump valve unit using complex script here,
+                launches a new thread that sends a sequence of RunAtPort commands
+                and sleeps for the expected pump run time in between"""
+    # self.seq_dict = seq_dict
+    PV.running_seq = True
+
+    def runSeqScript(_PV, params):  # ,thread_kill):# port = None, dir = None, vol = None, rat = None):
+        """ Loop 5 = ~1min x 5  = ~ 5min
+            1.1)withdraw loading material
+            1.2)infuse to device
+            1.3)infuse to waste
+            1.4)withdraw buffer
+            """
+
+        def RunAtPort_threadCheck(_PV, p, r, v, d):
+            _PV.RunAtPort(p, r, v, d)
+            expect_time = int(int(v) / (int(r) / 60))
+            _PV.thread_kill.wait(timeout=expect_time)
+            if _PV.thread_kill.is_set():
+                print("killing thread inner")
+                return False
+            pump_Running = True
+            while pump_Running:
+                status = _PV.pump.getStatus()
+                if status == 'halted':
+                    pump_Running = False
+            return True
+        for hour in range(params['hours']):
+            flag = True
+            i = 0
+            while flag and i < 5:
+                flag = RunAtPort_threadCheck(_PV, p=2, r=400, v=200, d='Withdraw') and \
+                       RunAtPort_threadCheck(_PV, p=6, r=200, v=200, d='Infuse') and \
+                       RunAtPort_threadCheck(_PV, p=7, r=400, v=50, d='Infuse') and \
+                       RunAtPort_threadCheck(_PV, p=1, r=400, v=50, d='Withdraw')
+
+                i += 1
+            if _PV.thread_kill.is_set():
+                break
+        _PV.running_seq = False
+        _PV.thread_kill.clear()
+        _PV.current_phase = "no seq"
+        print("finished sequence")
+
+    PV.thread_kill = threading.Event()
+    PV.k = threading.Thread(target=runSeqScript, args=(PV, params))
+    PV.k.start()
 
 def S_wash_4d(PV,params):
     """Runs program for the pump valve unit using complex script here,
@@ -335,6 +383,58 @@ def op50flow(PV,params):
                        RunAtPort_threadCheck(_PV, p=6, r=10, v=150, d='Infuse') and \
                        RunAtPort_threadCheck(_PV, p=7, r=500, v=50, d='Infuse') and \
                        RunAtPort_threadCheck(_PV, p=1, r=500, v=50, d='Withdraw')
+
+                i += 1
+            if _PV.thread_kill.is_set():
+                break
+        _PV.running_seq = False
+        _PV.thread_kill.clear()
+        _PV.current_phase = "no seq"
+        print("finished sequence")
+
+    PV.thread_kill = threading.Event()
+    PV.k = threading.Thread(target=runSeqScript, args=(PV, params))
+    PV.k.start()
+
+def two_bact_flow(PV,params):
+    """Runs program for the pump valve unit using complex script here,
+                launches a new thread that sends a sequence of RunAtPort commands
+                and sleeps for the expected pump run time in between"""
+    # self.seq_dict = seq_dict
+    PV.running_seq = True
+
+    def runSeqScript(_PV, params):  # ,thread_kill):# port = None, dir = None, vol = None, rat = None):
+        """ Loop 20 = ~1.5min x 20  = ~ 30min
+            1.1)withdraw loading material
+            1.2)infuse to device
+            1.3)infuse to waste
+            1.4)withdraw buffer
+            """
+
+        def RunAtPort_threadCheck(_PV, p, r, v, d):
+            _PV.RunAtPort(p, r, v, d)
+            expect_time = int(int(v) / (int(r) / 60))
+            _PV.thread_kill.wait(timeout=expect_time)
+            if _PV.thread_kill.is_set():
+                print("killing thread inner")
+                return False
+            pump_Running = True
+            while pump_Running:
+                status = _PV.pump.getStatus()
+                if status == 'halted':
+                    pump_Running = False
+            return True
+
+        for hour in range(params['hours']):
+            flag = True
+            i = 0
+            while flag and i < 30:
+                flag = RunAtPort_threadCheck(_PV, p=3, r=400, v=100, d='Withdraw') and \
+                       RunAtPort_threadCheck(_PV, p=4, r=400, v=100, d='Withdraw') and \
+                       RunAtPort_threadCheck(_PV, p=6, r=200, v=100, d='Infuse') and \
+                       RunAtPort_threadCheck(_PV, p=6, r=5, v=100, d='Infuse') and \
+                       RunAtPort_threadCheck(_PV, p=7, r=200, v=50, d='Infuse') and \
+                       RunAtPort_threadCheck(_PV, p=1, r=200, v=50, d='Withdraw')
 
                 i += 1
             if _PV.thread_kill.is_set():

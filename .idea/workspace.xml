@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54d73e3f-3c22-4637-8456-d245f7c70b3f" name="Default Changelist" comment="added main_config.json and myprograms.json. myser now takes from main_config for the pump and valve addresses and com ports">
+    <list default="true" id="54d73e3f-3c22-4637-8456-d245f7c70b3f" name="Default Changelist" comment="edited PV_seq_script and myprograms">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PV_seq_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/PV_seq_script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PumpValveControl.py" beforeDir="false" afterPath="$PROJECT_DIR$/PumpValveControl.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myprograms.json" beforeDir="false" afterPath="$PROJECT_DIR$/myprograms.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +67,6 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="28fc2741-f5df-4e11-9de1-990378461daf" name="Default Changelist" comment="" />
       <created>1625853505991</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -142,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629157770358</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="edited PV_seq_script and myprograms">
+      <created>1634185375656</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1634185375656</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -179,6 +186,7 @@
     <MESSAGE value="Switched com and pump address" />
     <MESSAGE value="added variable programs to run at entry port dir vol and rate" />
     <MESSAGE value="added main_config.json and myprograms.json. myser now takes from main_config for the pump and valve addresses and com ports" />
-    <option name="LAST_COMMIT_MESSAGE" value="added main_config.json and myprograms.json. myser now takes from main_config for the pump and valve addresses and com ports" />
+    <MESSAGE value="edited PV_seq_script and myprograms" />
+    <option name="LAST_COMMIT_MESSAGE" value="edited PV_seq_script and myprograms" />
   </component>
 </project>
