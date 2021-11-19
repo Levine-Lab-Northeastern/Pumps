@@ -68,7 +68,7 @@ class PumpValve:
                         d = entry_params["dir"]
                     else: d = phase["dir"]
                     _self.RunAtPort(p, r, v, d)
-                    expect_time = int(int(v) / (int(r) / 60))
+                    expect_time = int(int(v) / (int(r) / 60))+4
                     _self.thread_kill.wait(timeout = expect_time)
                     if _self.thread_kill.is_set():
                         print("killing thread inner")

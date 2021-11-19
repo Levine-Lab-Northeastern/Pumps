@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54d73e3f-3c22-4637-8456-d245f7c70b3f" name="Default Changelist" comment="edited PV_seq_script and myprograms">
+    <list default="true" id="54d73e3f-3c22-4637-8456-d245f7c70b3f" name="Default Changelist" comment="fived a stop manual error and added program">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PV_seq_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/PV_seq_script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PumpValve.py" beforeDir="false" afterPath="$PROJECT_DIR$/PumpValve.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PumpValveControl.py" beforeDir="false" afterPath="$PROJECT_DIR$/PumpValveControl.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myprograms.json" beforeDir="false" afterPath="$PROJECT_DIR$/myprograms.json" afterDir="false" />
     </list>
@@ -149,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634185375656</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="fived a stop manual error and added program">
+      <created>1634683539121</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1634683539121</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -187,6 +195,7 @@
     <MESSAGE value="added variable programs to run at entry port dir vol and rate" />
     <MESSAGE value="added main_config.json and myprograms.json. myser now takes from main_config for the pump and valve addresses and com ports" />
     <MESSAGE value="edited PV_seq_script and myprograms" />
-    <option name="LAST_COMMIT_MESSAGE" value="edited PV_seq_script and myprograms" />
+    <MESSAGE value="fived a stop manual error and added program" />
+    <option name="LAST_COMMIT_MESSAGE" value="fived a stop manual error and added program" />
   </component>
 </project>

@@ -110,7 +110,15 @@
     "type" : "python code",
      "Params" : {"hours" : 1}
   },
+   { "name":  "op50",
+    "type" : "python code",
+     "Params" : {"hours" : 1}
+  },
    { "name":  "two_bact_flow",
+    "type" : "python code",
+     "Params" : {"hours" : 1}
+  },
+   { "name":  "two_bact_simp",
     "type" : "python code",
      "Params" : {"hours" : 1}
   },

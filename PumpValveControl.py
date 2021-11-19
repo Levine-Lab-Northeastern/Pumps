@@ -215,7 +215,7 @@ class PumpValveControl(QtWidgets.QWidget):
          # self.primemapper.mapped.connect(self.prime_pumps)
 
         # set up the status bar
-        self.curr_state = 'add later'
+        self.curr_state = ''
         self.statusbar = QtWidgets.QLabel(self)
         grid.addWidget(self.statusbar,1,4)
         self.statusbar.setText('Status: '+self.curr_state)
