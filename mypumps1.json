@@ -1,5 +1,5 @@
 { "pumps":  [
-      { "address": 0,
+      { "address": 6,
       "diameter" : 14.3,
       "volume" : 6000,
       "rate" : 200,
@@ -16,8 +16,15 @@
   },
   { "name":  "sk low flow",
     "total time": 1000,
-    "flow rate" : 3.0,
-    "pulse rate":  50.0,
+    "flow rate" : 6,
+    "pulse rate":  100,
+    "pulse duration":  0.5,
+    "pulse frequency":  29.5
+  },
+  { "name":  "sk_LF_withdraw",
+    "total time": 1000,
+    "flow rate" : 6,
+    "pulse rate":  100,
     "pulse duration":  0.5,
     "pulse frequency":  29.5
   },

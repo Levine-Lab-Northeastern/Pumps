@@ -242,7 +242,7 @@ class PumpControl(QtWidgets.QWidget):
                     print('pump halted but button is checked')
             print('I''m running pump {} '.format(i))
             # send seq of commands
-            if self._prog[i] != 'pulse w/ w' and self._prog[i] != 'wash' and self._prog[i] != 'chai' and self._prog[i] != 'capstone':
+            if self._prog[i] != 'pulse w/ w' and self._prog[i] != 'wash' and self._prog[i] != 'chai' and self._prog[i] != 'capstone' and self._prog[i] != 'sk_LF_withdraw':
                 print('got to 1')
                 this_prog = self._prog_dict[self._prog[i]]
                 print('got to 2')
@@ -280,7 +280,41 @@ class PumpControl(QtWidgets.QWidget):
                     self._pumps[i].sendCommand('FUN STP')
                     self._lock.release()
                     self._pumps[i].run()
+            elif self._prog[i] == 'sk_LF_withdraw':
 
+                this_prog = self._prog_dict[self._prog[i]]
+                volploop = this_prog['pulse rate'] * this_prog['pulse duration'] + this_prog['flow rate'] * this_prog[
+                    'pulse frequency']
+                '''check to see if there is enough volume for a loop'''
+                if int(str(self.vol[i].text())) <= volploop * 2:
+                    self.run_btns[i].setChecked(False)
+                    self.error_state = 'pump {}: not enough vol for prog'.format(i)
+                    self.errorbar.setText('Error: ' + self.error_state)
+                else:
+                    loops = round(int(str(self.vol[i].text())) / volploop) - 1
+                    self._lock.acquire()
+                    self._pumps[i].sendCommand('PHN  1')
+                    self._pumps[i].sendCommand('FUN RAT')
+                    self._pumps[i].sendCommand('RAT {} {}'.format(this_prog['pulse rate'], 'UM'))
+                    self._pumps[i].sendCommand('VOL {}'.format(this_prog['pulse rate'] * this_prog['pulse duration']))
+                    self._pumps[i].sendCommand('DIR WDR')
+                    # ('phase 2')
+
+                    self._pumps[i].sendCommand('PHN  2')
+                    self._pumps[i].sendCommand('FUN RAT')
+                    self._pumps[i].sendCommand('RAT {} {}'.format(this_prog['flow rate'], 'UM'))
+                    self._pumps[i].sendCommand('VOL {}'.format(this_prog['flow rate'] * this_prog['pulse frequency']))
+                    self._pumps[i].sendCommand('DIR WDR')
+                    # print('phase 3')
+
+                    self._pumps[i].sendCommand('PHN  3')
+                    self._pumps[i].sendCommand('FUN LOP {}'.format(loops))
+                    # print('phase 4')
+
+                    self._pumps[i].sendCommand('PHN  4')
+                    self._pumps[i].sendCommand('FUN STP')
+                    self._lock.release()
+                    self._pumps[i].run()
             elif self._prog[i] == 'pulse w/ w': ## not complete
                 pasT = 3
                 self._lock.acquire()
