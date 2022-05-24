@@ -118,6 +118,26 @@
     "type" : "python code",
      "Params" : {"hours" : 1}
   },
+   { "name":  "one_bact_flow",
+    "type" : "python code",
+     "Params" : {"hours" : 1}
+  },
+   { "name":  "wdr_prime_8ports",
+    "type" : "python code",
+     "Params" : {"hours" : 1}
+  },
+   { "name":  "wdr_2_bact_2_dev",
+    "type" : "python code",
+     "Params" : {"hours" : 1}
+  },
+   { "name":  "wdr_1_bact_4_dev",
+    "type" : "python code",
+     "Params" : {"hours" : 1}
+  },
+   { "name":  "two_bact_flow_wash",
+    "type" : "python code",
+     "Params" : {"hours" : 1}
+  },
    { "name":  "two_bact_simp",
     "type" : "python code",
      "Params" : {"hours" : 1}
