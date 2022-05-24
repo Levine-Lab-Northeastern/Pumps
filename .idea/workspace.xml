@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54d73e3f-3c22-4637-8456-d245f7c70b3f" name="Default Changelist" comment="minor edits to pump valve and pump valve control, added new prog in seq script">
+    <list default="true" id="54d73e3f-3c22-4637-8456-d245f7c70b3f" name="Default Changelist" comment="added a withdraw flow and pulse program because the inf or wtd parameter is hard coded for programs need to address this later">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PV_seq_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/PV_seq_script.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myprograms.json" beforeDir="false" afterPath="$PROJECT_DIR$/myprograms.json" afterDir="false" />
