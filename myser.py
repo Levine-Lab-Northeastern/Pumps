@@ -184,8 +184,14 @@ if __name__ == '__main__':
     import PumpValve
     import threading
     from PumpValve import PumpValve
+    #
+    # from pycromanager import Acquisition, multi_d_acquisition_events, Dataset, Core, Bridge, Studio
+    # core = Core()
+    # print(core)
+    # core.snap_image()
     #main_test(10)
     main_ui()
+
 
     #print(sys.argv[0])
 
