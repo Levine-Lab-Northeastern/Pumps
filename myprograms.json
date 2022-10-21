@@ -122,6 +122,14 @@
     "type" : "python code",
      "Params" : {"hours" : 1}
   },
+   { "name":  "one_bact_wdr_flow_sync",
+    "type" : "python code",
+     "Params" : {"hours" : 1}
+  },
+   { "name":  "one_bact_wdr_flow",
+    "type" : "python code",
+     "Params" : {"hours" : 1}
+  },
    { "name":  "wdr_prime_8ports",
     "type" : "python code",
      "Params" : {"hours" : 1}

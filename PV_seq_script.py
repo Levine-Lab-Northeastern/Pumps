@@ -617,6 +617,138 @@ def two_bact_flow(PV,params):
     PV.thread_kill = threading.Event()
     PV.k = threading.Thread(target=runSeqScript, args=(PV, params))
     PV.k.start()
+
+
+def one_bact_wdr_flow_sync(PV,params):
+    """Runs program for the pump valve unit using complex script here,
+                launches a new thread that sends a sequence of RunAtPort commands
+                and sleeps for the expected pump run time in between"""
+    # self.seq_dict = seq_dict
+    PV.running_seq = True
+
+    def runSeqScript(_PV, params):  # ,thread_kill):# port = None, dir = None, vol = None, rat = None):
+        """ Loop 20 = ~1.5min x 20  = ~ 30min
+            1.1)withdraw loading material
+            1.2)infuse to device
+            1.3)infuse to waste
+            1.4)withdraw buffer
+            """
+
+        def RunAtPort_threadCheck(_PV, p, r, v, d):
+            _PV.RunAtPort(p, r, v, d)
+            expect_time = int(int(v) / (int(r) / 60))+4
+            _PV.thread_kill.wait(timeout=expect_time)
+            if _PV.thread_kill.is_set():
+                print("killing thread inner")
+                return False
+            pump_Running = True
+            while pump_Running:
+                status = _PV.pump.getStatus()
+                if status == 'halted':
+                    pump_Running = False
+                return True
+                # params['hours']
+        for hour in range(10):
+            with open(r'C:\Users\LevineLab\Documents\python notebooks\file_com\wash_num_{}.txt'.format(hour), 'x') as f:
+                f.write('Create a new text file!')
+            flag = True
+            i = 0
+            while flag and i < 1:
+                flag = RunAtPort_threadCheck(_PV, p=2, r=200, v=300, d='Infuse') and \
+                       RunAtPort_threadCheck(_PV, p=2, r=12, v=60, d='Infuse') and \
+                       RunAtPort_threadCheck(_PV, p=4, r=600, v=360, d='Withdraw')
+
+                i += 1
+            if _PV.thread_kill.is_set():
+                break
+            flag = True
+            i = 0
+            while flag and i < 5:
+                flag = RunAtPort_threadCheck(_PV, p=8, r=300, v=300, d='Withdraw') and \
+                       RunAtPort_threadCheck(_PV, p=2, r=200, v=100, d='Infuse') and \
+                       RunAtPort_threadCheck(_PV, p=2, r=12, v=48, d='Infuse') and \
+                       RunAtPort_threadCheck(_PV, p=2, r=200, v=100, d='Infuse') and \
+                       RunAtPort_threadCheck(_PV, p=2, r=12, v=48, d='Infuse') and \
+                       RunAtPort_threadCheck(_PV, p=3, r=600, v=300, d='Infuse') and \
+                       RunAtPort_threadCheck(_PV, p=4, r=600, v=300, d='Withdraw')
+                i += 1
+            if _PV.thread_kill.is_set():
+                break
+
+        _PV.running_seq = False
+        _PV.thread_kill.clear()
+        _PV.current_phase = "no seq"
+        print("finished sequence")
+
+    PV.thread_kill = threading.Event()
+    PV.k = threading.Thread(target=runSeqScript, args=(PV, params))
+    PV.k.start()
+def one_bact_wdr_flow(PV,params):
+    """Runs program for the pump valve unit using complex script here,
+                launches a new thread that sends a sequence of RunAtPort commands
+                and sleeps for the expected pump run time in between"""
+    # self.seq_dict = seq_dict
+    PV.running_seq = True
+
+    def runSeqScript(_PV, params):  # ,thread_kill):# port = None, dir = None, vol = None, rat = None):
+        """ Loop 20 = ~1.5min x 20  = ~ 30min
+            1.1)withdraw loading material
+            1.2)infuse to device
+            1.3)infuse to waste
+            1.4)withdraw buffer
+            """
+
+        def RunAtPort_threadCheck(_PV, p, r, v, d):
+            _PV.RunAtPort(p, r, v, d)
+            expect_time = int(int(v) / (int(r) / 60))+4
+            _PV.thread_kill.wait(timeout=expect_time)
+            if _PV.thread_kill.is_set():
+                print("killing thread inner")
+                return False
+            pump_Running = True
+            while pump_Running:
+                status = _PV.pump.getStatus()
+                if status == 'halted':
+                    pump_Running = False
+                return True
+                # params['hours']
+        for hour in range(10):
+            #with open(r'C:\Users\LevineLab\Documents\python notebooks\file_com\wash_num_{}.txt'.format(hour), 'x') as f:
+                #f.write('Create a new text file!')
+
+            flag = True
+            i = 0
+            while flag and i < 5:
+                flag = RunAtPort_threadCheck(_PV, p=8, r=300, v=300, d='Withdraw') and \
+                       RunAtPort_threadCheck(_PV, p=2, r=200, v=100, d='Infuse') and \
+                       RunAtPort_threadCheck(_PV, p=2, r=12, v=48, d='Infuse') and \
+                       RunAtPort_threadCheck(_PV, p=2, r=200, v=100, d='Infuse') and \
+                       RunAtPort_threadCheck(_PV, p=2, r=12, v=48, d='Infuse') and \
+                       RunAtPort_threadCheck(_PV, p=3, r=600, v=300, d='Infuse') and \
+                       RunAtPort_threadCheck(_PV, p=4, r=600, v=300, d='Withdraw')
+                i += 1
+            if _PV.thread_kill.is_set():
+                break
+            flag = True
+            i = 0
+            while flag and i < 1:
+                flag = RunAtPort_threadCheck(_PV, p=2, r=200, v=300, d='Infuse') and \
+                       RunAtPort_threadCheck(_PV, p=2, r=12, v=60, d='Infuse') and \
+                       RunAtPort_threadCheck(_PV, p=4, r=600, v=360, d='Withdraw')
+
+                i += 1
+            if _PV.thread_kill.is_set():
+                break
+
+        _PV.running_seq = False
+        _PV.thread_kill.clear()
+        _PV.current_phase = "no seq"
+        print("finished sequence")
+
+    PV.thread_kill = threading.Event()
+    PV.k = threading.Thread(target=runSeqScript, args=(PV, params))
+    PV.k.start()
+
 def wdr_prime_8ports(PV,params):
     """Runs program for the pump valve unit using complex script here,
                 launches a new thread that sends a sequence of RunAtPort commands
