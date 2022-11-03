@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54d73e3f-3c22-4637-8456-d245f7c70b3f" name="Default Changelist" comment="added a withdraw flow and pulse program because the inf or wtd parameter is hard coded for programs need to address this later">
+    <list default="true" id="54d73e3f-3c22-4637-8456-d245f7c70b3f" name="Default Changelist" comment="not sure whats in this one">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PV_seq_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/PV_seq_script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myprograms.json" beforeDir="false" afterPath="$PROJECT_DIR$/myprograms.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +160,21 @@
       <option name="project" value="LOCAL" />
       <updated>1637284570924</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="a few flow programs and some changes with new com ports since now using micro-manager, also now able to use pycromanager in this code base">
+      <created>1660178871372</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1660178871372</updated>
+    </task>
+    <task id="LOCAL-00015" summary="not sure whats in this one">
+      <created>1666395946677</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1666395946677</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -202,6 +214,8 @@
     <MESSAGE value="edited PV_seq_script and myprograms" />
     <MESSAGE value="fived a stop manual error and added program" />
     <MESSAGE value="minor edits to pump valve and pump valve control, added new prog in seq script" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor edits to pump valve and pump valve control, added new prog in seq script" />
+    <MESSAGE value="a few flow programs and some changes with new com ports since now using micro-manager, also now able to use pycromanager in this code base" />
+    <MESSAGE value="not sure whats in this one" />
+    <option name="LAST_COMMIT_MESSAGE" value="not sure whats in this one" />
   </component>
 </project>
