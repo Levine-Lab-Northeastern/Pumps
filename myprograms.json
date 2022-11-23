@@ -94,6 +94,10 @@
     "type" : "python code",
      "Params" : {"hours" : 1}
   },
+   { "name":  "Pluronic_4d_p6",
+    "type" : "python code",
+     "Params" : {"hours" : 1}
+  },
    { "name":  "p_4d_op50",
     "type" : "python code",
      "Params" : {"hours" : 1}
@@ -119,6 +123,10 @@
      "Params" : {"hours" : 1}
   },
    { "name":  "one_bact_flow",
+    "type" : "python code",
+     "Params" : {"hours" : 1}
+  },
+   { "name":  "one_bact_switch_wdr_sync",
     "type" : "python code",
      "Params" : {"hours" : 1}
   },
