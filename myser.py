@@ -18,7 +18,7 @@ def main_ui():
         else:
             fp = open('mypumps1.json')
             pc = open('myprograms.json')
-            main = open('main_config.json')
+            main = open('main_config_2PV.json')
         pump_config = json.load(fp)
         prog_config = json.load(pc)
         main_config = json.load(main)

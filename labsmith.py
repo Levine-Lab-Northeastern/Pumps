@@ -28,6 +28,10 @@ class Valve:
         the command for checking if the valve is moving is passing in the output of
         GetValveStatus (the port its on, exept when finished says 0)
         to IsMoving which returns boolean"""
+        # port_ref = [5,6,7,8,1,2,3,4]
+        # if self.channel == 1:
+        #     port = port_ref[port-1]
+
         print("labsmith valve obj, moving to port {}".format(port))
         moving = True
         while moving:
