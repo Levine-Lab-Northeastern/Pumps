@@ -1662,6 +1662,11 @@ def jub39_r_switch_g(PV,params):
     PV.k.start()
 
 def prog_from_json1(PV,params):
+    """there a re 3 types of steps.
+    'make_schedule': will read the list of cycle times, note the current time and make a file with the schedule
+        for each cycle given the current start time.
+    'notify': will write a line to a file noting what whash cycle it is now starting
+    'pvflow': will send code to pumps valves"""
     PV.running_seq = True
 
     def runStep_threadCheck(_PV,step_dict):
