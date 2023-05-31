@@ -1716,3 +1716,59 @@ def prog_from_json1(PV,params):
         PV.k.start()
     else:
         print('seq length 0')
+
+def prog_from_json2(PV,params):
+    """there a re 3 types of steps.
+    'make_schedule': will read the list of cycle times, note the current time and make a file with the schedule
+        for each cycle given the current start time.
+    'notify': will write a line to a file noting what whash cycle it is now starting
+    'pvflow': will send code to pumps valves"""
+    PV.running_seq = True
+
+    def runStep_threadCheck(_PV,step_dict):
+        if step_dict['type'] == 'make_schedule':
+            now = datetime.datetime.now()
+            for delta_t in step_dict['cycle_times']:
+                now = now + datetime.timedelta(minutes = float(delta_t))
+                fname = '{}_{}.txt'.format(step_dict['file_name'],_PV.pvADR)
+                with open(fname, 'a') as file:
+                    file.write('{} \n'.format(now))
+        elif step_dict['type'] == 'notify':
+            fname = '{}_{}'.format(step_dict['com_file'],_PV.pvADR)
+            with open(fname, 'a') as file:
+                file.write('{} notify_step: {}\n'.format(datetime.datetime.now(),step_dict['message']))
+        elif step_dict['type'] == 'pvflow':
+            _PV.RunAtPort(port = step_dict['p'], rat = step_dict['r'], vol = step_dict['v'], direction = step_dict['d'])
+            expect_time = int(int(step_dict['v']) / int(step_dict['r']) * 60) +int(step_dict['post_wait'])
+            _PV.thread_kill.wait(timeout=expect_time)
+
+        if _PV.thread_kill.is_set():
+            print("killing thread inner")
+            return False
+        pump_Running = True
+        while pump_Running:
+            status = _PV.pump.getStatus()
+            if status == 'halted':
+                pump_Running = False
+        return True
+
+    def runSeqScript(_PV,seq_list):
+        flag = True
+        step_num = 0
+        while flag and step_num < len(seq_list):
+            flag = runStep_threadCheck(_PV, sequence_steps[step_num])
+            step_num += 1
+        _PV.running_seq = False
+        _PV.thread_kill.clear()
+        _PV.current_phase = "no seq"
+        print("finished sequence")
+
+    with open(params['file_path'], 'r') as f:
+        prog_dict = json.load(f)
+    sequence_steps = prog_dict['sequence_steps']
+    if len(sequence_steps)>0:
+        PV.thread_kill = threading.Event()
+        PV.k = threading.Thread(target=runSeqScript, args=(PV, sequence_steps))
+        PV.k.start()
+    else:
+        print('seq length 0')
