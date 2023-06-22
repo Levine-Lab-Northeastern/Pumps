@@ -114,6 +114,10 @@
     "type" : "python code",
      "Params" : {"hours" : 1}
   },
+   { "name":  "op50flow_16f_200p",
+    "type" : "python code",
+     "Params" : {"hours" : 1}
+  },
    { "name":  "op50flow_p6",
     "type" : "python code",
      "Params" : {"hours" : 1}
