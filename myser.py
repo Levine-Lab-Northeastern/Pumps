@@ -76,14 +76,14 @@ def main_test(sleeptime=None):
         if (len(sys.argv)>1):
             fp = open(sys.argv[1])
         else:
-            fp = open('mypumps1.json')
+            fp = open('mypumps3.json')
         pump_config = json.load(fp)
         fp.close()
     except IOError:
         print ('config file not found')
         sys.exit(0)
 
-    ser = serial.Serial(baudrate=19200,timeout=0.1,port='COM4')
+    ser = serial.Serial(baudrate=19200,timeout=0.1,port='COM11')
     print(ser.is_open)
 
     pumps = []

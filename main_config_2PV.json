@@ -1,7 +1,7 @@
 {"PumpCOM" : "COM11",
   "ValveCOM" : 5,
   "NumPumps": 3,
-  "NumValves": 3,
+  "NumValves": 1,
   "Pumps":[{"address": 6,"diameter": 14.3,"rate-units" : "UM", "vol-units" : "UL"},
     {"address": 0,"diameter": 14.3,"rate-units" : "UM", "vol-units" : "UL"},
     {"address": 3,"diameter": 14.3,"rate-units" : "UM", "vol-units" : "UL"}],
