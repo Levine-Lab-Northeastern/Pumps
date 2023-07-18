@@ -205,5 +205,9 @@
    { "name":  "prog_from_json2",
     "type" : "python code",
      "Params" : {"file_path":"pump_prog_5_21_23_2.json" }
+  },
+   { "name":  "prog_from_json3",
+    "type" : "python code",
+     "Params" : {"file_path":"pump_prog_7_17_23.json" }
   }
  ]}

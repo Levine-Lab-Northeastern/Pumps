@@ -18,10 +18,13 @@ class PumpValve:
         self.phaseTargetDispense = 0
 
     def moveToPort(self,port):
+        cp = self.current_port
         """Moves valve to the port passed in, helper method for RunAtPort"""
         if self.pump.getStatus() != 'halted':
             self.pump.stop()
         self.valve.moveToPort(port)
+        if port != cp:
+            time.sleep(3)
         self.current_port = port
 
     def runPumpPhase(self,rat,vol,direction):
