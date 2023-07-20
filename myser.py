@@ -24,7 +24,7 @@ def main_ui():
         sys.exit(0)
 
     programs = {x['name']:x for x in pump_config['programs']}
-    ser = serial.Serial(baudrate=19200,timeout=0.1,port='COM4')
+    ser = serial.Serial(baudrate=19200,timeout=0.1,port='COM11')
     print(ser.is_open)
 
     pumps = []
