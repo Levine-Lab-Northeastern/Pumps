@@ -1721,6 +1721,9 @@ def prog_from_json1(PV,params):
     PV.running_seq = True
 
     def runStep_threadCheck(_PV,step_dict):
+        log_fname = 'pump_{}_prog_log.txt'.format(_PV.pvADR)
+        with open(log_fname, 'a') as file:
+            file.write('{} {}\n'.format(datetime.datetime.now(),step_dict))
         if step_dict['type'] == 'make_schedule':
             now = datetime.datetime.now()
             for delta_t in step_dict['cycle_times']:
@@ -1729,12 +1732,12 @@ def prog_from_json1(PV,params):
                 with open(fname, 'a') as file:
                     file.write('{} \n'.format(now))
         elif step_dict['type'] == 'notify':
-            fname = '{}_{}'.format(step_dict['com_file'],_PV.pvADR)
+            fname = '{}_{}.txt'.format(step_dict['com_file'],_PV.pvADR)
             with open(fname, 'a') as file:
                 file.write('{} notify_step: {}\n'.format(datetime.datetime.now(),step_dict['message']))
         elif step_dict['type'] == 'pvflow':
             _PV.RunAtPort(port = step_dict['p'], rat = step_dict['r'], vol = step_dict['v'], direction = step_dict['d'])
-            expect_time = int(int(step_dict['v']) / int(step_dict['r']) * 60) +int(step_dict['post_wait'])
+            expect_time = math.ceil(int(step_dict['v']) / int(step_dict['r']) * 60) +int(step_dict['post_wait'])
             _PV.thread_kill.wait(timeout=expect_time)
 
         if _PV.thread_kill.is_set():
@@ -1777,6 +1780,9 @@ def prog_from_json2(PV,params):
     PV.running_seq = True
 
     def runStep_threadCheck(_PV,step_dict):
+        log_fname = 'pump_{}_prog_log.txt'.format(_PV.pvADR)
+        with open(log_fname, 'a') as file:
+            file.write('{} {}\n'.format(datetime.datetime.now(), step_dict))
         if step_dict['type'] == 'make_schedule':
             now = datetime.datetime.now()
             for delta_t in step_dict['cycle_times']:
@@ -1785,7 +1791,7 @@ def prog_from_json2(PV,params):
                 with open(fname, 'a') as file:
                     file.write('{} \n'.format(now))
         elif step_dict['type'] == 'notify':
-            fname = '{}_{}'.format(step_dict['com_file'],_PV.pvADR)
+            fname = '{}_{}.txt'.format(step_dict['com_file'],_PV.pvADR)
             with open(fname, 'a') as file:
                 file.write('{} notify_step: {}\n'.format(datetime.datetime.now(),step_dict['message']))
         elif step_dict['type'] == 'pvflow':
@@ -1833,6 +1839,9 @@ def prog_from_json3(PV,params):
     PV.running_seq = True
 
     def runStep_threadCheck(_PV,step_dict):
+        log_fname = 'pump_{}_prog_log.txt'.format(_PV.pvADR)
+        with open(log_fname, 'a') as file:
+            file.write('{} {}\n'.format(datetime.datetime.now(), step_dict))
         if step_dict['type'] == 'make_schedule':
             now = datetime.datetime.now()
             for delta_t in step_dict['cycle_times']:
