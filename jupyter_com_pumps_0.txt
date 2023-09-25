@@ -1,0 +1,12 @@
+2023-08-11 00:34:31.923696 notify_step: starting_wash 0
+2023-08-11 01:41:44.099447 notify_step: starting_wash 1
+2023-08-11 02:48:55.380958 notify_step: starting_wash 2
+2023-08-11 03:56:06.954372 notify_step: starting_wash 3
+2023-08-11 05:03:18.503614 notify_step: starting_wash 4
+2023-08-11 06:10:28.464293 notify_step: starting_wash 5
+2023-08-11 07:17:39.186806 notify_step: starting_wash 6
+2023-08-11 08:24:50.737199 notify_step: starting_wash 7
+2023-08-11 09:32:01.821661 notify_step: starting_wash 8
+2023-08-11 10:39:12.885612 notify_step: starting_wash 9
+2023-08-11 11:46:27.896862 notify_step: starting_wash 10
+2023-08-11 12:53:39.454941 notify_step: starting_wash 11

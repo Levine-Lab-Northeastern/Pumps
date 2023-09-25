@@ -1,0 +1,4727 @@
+{
+    "name": "simul_2species_json1.json",
+    "sequence_steps": [
+        {
+            "type": "make_schedule",
+            "file_name": "C:\\Users\\LevineLab\\Documents\\Repos\\Pumps\\wash_schedule",
+            "cycle_times": [
+                59.8,
+                67.28,
+                67.28,
+                67.28,
+                67.28,
+                67.28,
+                67.28,
+                67.28,
+                67.28,
+                67.28,
+                67.28,
+                67.28
+            ]
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "notify",
+            "com_file": "C:\\Users\\LevineLab\\Documents\\Repos\\Pumps\\jupyter_com_pumps",
+            "message": "starting_wash 0"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step1/3, pulse buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 60,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step2/3, flow buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 372,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "wash chip,step3/3, refill buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "notify",
+            "com_file": "C:\\Users\\LevineLab\\Documents\\Repos\\Pumps\\jupyter_com_pumps",
+            "message": "starting_wash 1"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step1/3, pulse buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 60,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step2/3, flow buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 372,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "wash chip,step3/3, refill buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "notify",
+            "com_file": "C:\\Users\\LevineLab\\Documents\\Repos\\Pumps\\jupyter_com_pumps",
+            "message": "starting_wash 2"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step1/3, pulse buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 60,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step2/3, flow buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 372,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "wash chip,step3/3, refill buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "notify",
+            "com_file": "C:\\Users\\LevineLab\\Documents\\Repos\\Pumps\\jupyter_com_pumps",
+            "message": "starting_wash 3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step1/3, pulse buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 60,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step2/3, flow buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 372,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "wash chip,step3/3, refill buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "notify",
+            "com_file": "C:\\Users\\LevineLab\\Documents\\Repos\\Pumps\\jupyter_com_pumps",
+            "message": "starting_wash 4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step1/3, pulse buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 60,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step2/3, flow buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 372,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "wash chip,step3/3, refill buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "notify",
+            "com_file": "C:\\Users\\LevineLab\\Documents\\Repos\\Pumps\\jupyter_com_pumps",
+            "message": "starting_wash 5"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step1/3, pulse buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 60,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step2/3, flow buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 372,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "wash chip,step3/3, refill buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "notify",
+            "com_file": "C:\\Users\\LevineLab\\Documents\\Repos\\Pumps\\jupyter_com_pumps",
+            "message": "starting_wash 6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step1/3, pulse buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 60,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step2/3, flow buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 372,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "wash chip,step3/3, refill buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "notify",
+            "com_file": "C:\\Users\\LevineLab\\Documents\\Repos\\Pumps\\jupyter_com_pumps",
+            "message": "starting_wash 7"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step1/3, pulse buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 60,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step2/3, flow buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 372,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "wash chip,step3/3, refill buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "notify",
+            "com_file": "C:\\Users\\LevineLab\\Documents\\Repos\\Pumps\\jupyter_com_pumps",
+            "message": "starting_wash 8"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step1/3, pulse buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 60,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step2/3, flow buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 372,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "wash chip,step3/3, refill buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "notify",
+            "com_file": "C:\\Users\\LevineLab\\Documents\\Repos\\Pumps\\jupyter_com_pumps",
+            "message": "starting_wash 9"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step1/3, pulse buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 60,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step2/3, flow buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 372,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "wash chip,step3/3, refill buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "notify",
+            "com_file": "C:\\Users\\LevineLab\\Documents\\Repos\\Pumps\\jupyter_com_pumps",
+            "message": "starting_wash 10"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step1/3, pulse buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 60,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step2/3, flow buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 372,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "wash chip,step3/3, refill buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "pvflow",
+            "p": 4,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p4"
+        },
+        {
+            "type": "pvflow",
+            "p": 3,
+            "r": 300,
+            "v": 150,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step1/7, withdraw p3"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step2/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step3/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 100,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step4/7 pulse to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 48,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step5/7 flow to device p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 7,
+            "r": 600,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "1port injection flow, step6/7 to waste p7"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 300,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "1port injection flow, step7/7 wdr buffer p8"
+        },
+        {
+            "type": "notify",
+            "com_file": "C:\\Users\\LevineLab\\Documents\\Repos\\Pumps\\jupyter_com_pumps",
+            "message": "starting_wash 11"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 200,
+            "v": 300,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step1/3, pulse buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 6,
+            "r": 12,
+            "v": 60,
+            "d": "Infuse",
+            "post_wait": 4,
+            "status": "wash chip,step2/3, flow buffer to chip p6"
+        },
+        {
+            "type": "pvflow",
+            "p": 8,
+            "r": 600,
+            "v": 372,
+            "d": "Withdraw",
+            "post_wait": 4,
+            "status": "wash chip,step3/3, refill buffer p8"
+        }
+    ]
+}
